@@ -1,0 +1,1574 @@
+/* Theme files were generated using dojo theme utils, using a darkColor: #000000, and lightColor: #FFE93B - Replace these 2 colors in this file if you re-generate the theme files with another colors, also another yellow color is color: #EEF5B1;*/
+
+/* fix for the app overlapping with status bar */
+/* body:before {
+  content: "";
+  height: 20px;
+  display: block;
+} */
+
+@font-face {
+	font-family: abeezee;
+	src: url("../fonts/ABeeZee-Regular.ttf");
+}
+* {
+    -webkit-box-sizing: inherit !important;
+    -moz-box-sizing: inherit !important;
+    box-sizing: inherit !important;
+}
+#loginForm {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.adsDialog {
+	width:80%;
+	height: 80%;
+	z-index: 110;
+}
+.adsImage {
+    width : 100%;
+    height: 80%;
+}
+.loginField {
+	background-color: transparent;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+	border-color: #FFE93B;
+	border-radius: 0px !important;
+	color: #FFE93B;
+	margin-bottom: 10px;
+	font-size: large;
+}
+.blackColor {
+	color: black;
+}
+.tabIcon {
+	width: 20px;
+    border-radius: 45px;
+    margin-top: -6;
+}
+.leftSpacing {
+	margin-left: 10px;
+}
+.yellow {
+	color: #FFE93B;
+}
+.grey {
+	color: #EEF5B1;
+}
+.leftFloatedField {
+	float: left;
+}
+.rightFloatedField {
+	float:right;
+}
+.fullWidth {
+	width: 100%;
+}
+.fortyFivePercentWidth {
+	width: 45%;
+}
+.tenPercentWidth {
+	width: 10%;
+}
+.fullHeight {
+	height: 100%
+}
+.centerText {
+	text-align: center;
+}
+.textboxHeight {
+	height: 22px;
+	line-height: 22px;
+}
+.underlined {
+	border-bottom-style: outset;
+	border-bottom-width: 1px;
+}
+.smallItalicText{
+	text-align: center;
+	font-style: italic;
+	font-size: 10;
+}
+.contactUsToolBarButton {
+	margin-right: 15px;
+	float: right !important;
+	background-image: none !important;
+}
+.signoutToolBarButton {
+	margin-right: 15px;
+	float: left !important;
+	background-image: none !important;
+}
+.signoutToolBarButton > img {
+	width: 32px;
+	height: 32px;
+}
+.contactUsToolBarButton .mblToolBarButtonBody {
+}
+
+/* #registrationAccountScrollablePane .mblScrollableViewContainer,
+#registrationPersonalScrollablePane .mblScrollableViewContainer,
+#registrationPaymentsScrollablePane .mblScrollableViewContainer,
+#registrationAddressesScrollablePane .mblScrollableViewContainer,
+#registrationThatsItScrollablePane .mblScrollableViewContainer {
+	height: 100%
+}
+#registrationAccountScrollablePane .mblScrollableViewContainer .mblRoundRect,
+#registrationPersonalScrollablePane .mblScrollableViewContainer .mblRoundRect,
+#registrationAddressesScrollablePane .mblScrollableViewContainer .mblRoundRect,
+#registrationPaymentsScrollablePane .mblScrollableViewContainer .mblRoundRect,
+#registrationThatsItScrollablePane .mblScrollableViewContainer .mblRoundRect {
+	height: 90%;
+}
+ */
+.weareoffline {
+	font-size: 24px;
+	margin: 8px;
+}
+.weareofflinemessage {
+	margin: 10px;
+	font-size: 14px;
+}
+.weareofflinedialog {
+	text-align: center;
+	color: #FFE93B;
+}
+.freeDeliveryTag {
+	margin: 10px;
+	color: green;
+	font-size: 14px;
+}
+.closedWordContainer {
+	color: red;
+	float: right;
+	font-size: 11px;
+	height: 100%;
+	margin-top: 10px;
+}
+.contactUsToolBarButton img {
+	height: 32px;
+	width: 32px;
+}
+.contactUsSubjectField {
+	margin-bottom: 10px;
+	margin-top: 5px;
+}
+.contactUsMessageField {
+	height: 60px;
+	margin-bottom: 10px;
+}
+.contactUsTitle {
+	text-align: center;
+	color: #FFE93B;
+	font-size: 16px;
+}
+.pendingOrdersRoundRectList {
+	
+}
+.pendingOrdersRoundRectList .mblListItem {
+	height: 100px;
+}
+.driverOrdersRestaurantImgDiv {
+	float:left;
+	height: 40px;
+	width: 40px;
+}
+.pendingOrderRestaurantImgDiv {
+	float:left;
+	height: 60px;
+	width: 60px;
+}
+.driverOrdersRestaurantDetails {
+	line-height: initial;
+	float: left;
+	margin-right: 5px;
+	color: #FFE93B;
+}
+.pendingOrderRestaurantDetails {
+	height: 60px;
+	line-height: initial;
+	float: left;
+	margin-right: 5px;
+	color: #FFE93B;
+}
+.pendingOrderRestaurantName {
+	height: 20px;
+	font-weight: bold;
+	margin-top: 10px;
+	color: #FFE93B;
+	width: 120px !important; 
+}
+.pendingOrderRestaurantCuisine {
+	height: 10px;
+	font-size: 10px;
+	font-weight: normal;
+	color: #EEF5B1;
+}
+.pendingOrderRestaurantLocation {
+	height: 10px;
+	font-size: 10px;
+	font-weight: normal;
+	color: #EEF5B1;
+}
+.pendingOrderDetails {
+	height: 60px;
+	line-height: initial;
+	float: left;
+	border-left: inset;
+	padding-left: 5px;
+	color: #FFE93B;
+	width: 80px;
+}
+.pendingOrderCount {
+	margin-top: 10px;
+	margin-bottom: 4px;
+}
+.pendingOrderPrice {
+	color: green;
+	font-weight: bolder;
+	
+}
+.pendingOrderStatus {
+	margin-top: 3px;
+	width: 100%;
+	color: #FFE93B;
+}
+.pendingOrdersListItem table td:last-child {
+    width: 100%
+}
+.refreshImg {
+	float:right;
+	height: 30px;
+	width: 30px;	
+}
+.tapToRefresh {
+	margin-top: 4px;
+	color: #FFE93B;
+	margin-right: 5px;
+}
+.emptyRestaurant {
+	text-align: center;
+	padding-top: 150px;
+	padding-bottom: 150px;
+	font-size: 14px;
+}
+.pricePlan {
+	text-align: center;
+	padding-top: 100px;
+	padding-bottom: 100px;
+	font-size: 14px;
+}
+.requestDeliveryBtn {
+	
+}
+/* login page */
+.dialogBoxTitle {
+	color: #FFE93B;
+	font-size: 14px;
+	margin: 5px;
+}
+.centerBtnContainer {
+	text-align:center;
+}
+.forgotPasswordContainer {
+	font-size: 12px;
+	height: 12px;
+}
+.oneFifthHeightContainer {
+	height: 20%;
+}
+#loginTable {
+	width: 100%;
+	height: 100%;
+}
+#loginTableCell {
+	vertical-align: center;
+}
+.loginBtn   {
+	width:100%;
+	height: 40px;
+	border-radius: 6px;
+	background-image: inherit;
+	color: black;
+	background-color: #FFE93B;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+/* home page */
+.homeTabContainer {
+	height: 16px;
+	font-size: 12px;
+}
+.homeTabContainer .mblHeadingDivTitle {
+	height: 16px;
+	line-height: 16px;
+	font-size: 12px;
+}
+.restaurantImgDiv {
+	float:left;
+	height: 60px;
+	width: 25%;
+}
+/* image has to be 60 - (6*2) = 48 px */
+.driverOrdersRestaurantImg {
+	height: 38px;
+	width: 38px;
+}
+.activeOrderRestaurantImgDiv {
+	float:left;
+	height: 30px;
+	width: 30px;
+}
+.activeOrderestaurantImg {
+	height: 28px;
+	width: 28px;
+}
+.restaurantContainer {
+	float:left;
+	height: 100%;
+	width: 90%;
+}
+.closedRestaurantContainer {
+	float:left;
+	height: 100%;
+	width: 80%;
+}
+.nextBtnContainer {
+	float: right;
+	margin-top: 24px;
+}
+.restaurantDetails {
+	height: 60px;
+	line-height: initial;
+	float: left;
+	margin-right: 5px;
+	width: 70%;
+}
+.headerRestaurantDetails {
+	height: 60px;
+	line-height: initial;
+	float: left;
+	margin-right: 5px;
+	width: 30%;
+}
+.closedRestaurantDetails {
+	height: 60px;
+	line-height: initial;
+	float: left;
+	margin-left: 5px;
+	width: 70%;
+}
+.restaurantName {
+	max-height: 40px;
+	font-weight: bold;
+	margin-top: 5px;
+	width: 100%;
+	overflow: hidden;
+}
+.restaurantNameShort {
+	width: 120px;
+	height: 20px;
+	font-weight: bold;
+	margin-top: 10px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.headerRestaurantNameShort {
+	height: 20px;
+	font-weight: bold;
+	margin-top: 10px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.restaurantNameClosed {
+	max-height: 40px;
+	font-weight: bold;
+	margin-top: 5px;
+	width: 100%;
+	color: grey !important;
+	overflow: hidden;
+}
+.restaurantCuisine {
+	height: 10px;
+	font-size: 10px;
+	font-weight: normal;
+	color: #EEF5B1;
+}
+.restaurantLocation {
+	height: 10px;
+	font-size: 10px;
+	font-weight: normal;
+	color: #EEF5B1;
+}
+.nextBtn {
+	width: 12px;
+	height: 12px;
+	background-image: url(../img/next-icon_32x32.png);
+	padding: 0px;
+	float: right;
+	background-size: contain;
+}
+.selectedBtn {
+	width: 14px;
+	height: 14px;
+	background-image: url(../img/Selected.png);
+	padding: 0px;
+	float: right;
+	background-size: contain;
+	background-repeat: no-repeat;
+	margin-top: 10px;
+}
+
+/* categories page */
+.restaurantMenuCategoryDescription {
+	height: 12px;
+	font-size: 12px;
+	font-weight: normal;
+	color: #EEF5B1;
+}
+
+/* category items page */
+.restaurantMenuCategoryContainer {
+	float: left;
+}
+.categoriesNextBtnContainer {
+	float: right;
+	margin-top: 15px;
+}
+.restaurantCategoryDetails {
+	height: 60px;
+	line-height: initial;
+	float: left;
+	border-left: inset;
+	padding-left: 5px;
+}
+.headerRestaurantCategoryDetails {
+	height: 60px;
+	line-height: initial;
+	float: left;
+	border-left: inset;
+	padding-left: 5px;
+}
+.restaurantCategoryName {
+	margin-top: 12px;
+	width:100px;
+	font-size: 15px;
+	white-space:normal;
+	overflow: hidden;
+}
+.restaurantMenuCategoryItemName {
+	max-height: 48px;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 14px;
+	color: #FFE93B;
+	float:left;
+	width: 70%;
+	overflow: hidden;
+}
+.restaurantMenuCategoryItemSideName {
+	max-height: 48px;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 14px;
+	color: #FFE93B;
+	float:left;
+	width: 65%;
+	text-align: left;
+	overflow: hidden;
+}
+.restaurantMenuCategoryItemNameShort {
+	height: 20px;
+	font-weight: bold;
+	font-size: 14px;
+	color: #FFE93B;
+	width: 90%;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.restaurantMenuCategoryItemDescription {
+	font-size: 11px;
+	font-weight: normal;
+	color: #EEF5B1;
+	float:left;
+	width: 100%;
+	padding-top: 5px;
+}
+.restaurantMenuCategoryItemTable {
+	height: 100%;
+	width: 100%;
+}
+.restaurantMenuCategoryItemTable tr:last-child {
+	height: 100%;
+	vertical-align: top;
+}
+.categoryItemsList .mblListItem {
+	height: 100px;
+}
+.loadingDialog {
+	width: 80%;
+	height: 100px;
+	background-color: #333333;
+}
+.loadingDialog .mblProgressIndicatorCenter {
+	top: 40px;
+}
+.pendingOrdersListItem .mblProgressIndicatorCenter {
+	top: 0px;
+}
+.FirstTimePaymentsDialog {
+	width: 80%;
+	font-size: 14px;
+	text-align: left;
+}
+/* add, manage order item */
+.orderItemDialog {
+	width:80%;
+}
+.announcementDialog {
+	width: 80%;
+    background-color: #FFE93B !important;
+    color: black;
+    border-radius: 15px;
+    font-weight: bold;
+}
+.addOrderItemDialog {
+	width:80%;
+}
+.modifyOrderItemDialog {
+	width:80%;
+}
+.dialogImage {
+	width: 60px;
+	height: 60px;
+	border-radius: 45px;
+}
+.loadingImage {
+	/* width: 60px; */
+	height: 60px;
+}
+.dialogImageField {
+	height: 64px;
+	/* width: 64px; */
+	/* float: left; */
+}
+.chooseSidesDialog {
+	width: 80%;
+}
+.sidesScrollablePane {
+	height: 250px !important;
+}
+.specialInstructions {
+	width:100%;
+}
+.orderItemQuantity {
+	color: #FFE93B;
+	width:100%;
+	text-align:center;
+}
+.categoryItemContainer {
+	padding-bottom: 6px;
+}
+.orderItemContainer {
+	float: left;
+}
+.orderItemPriceContainer {
+	float: right;
+}
+.addToOrderBtn   {
+	width:100%;
+	height: 40px;
+	border-radius: 6px;
+	background-image: inherit;
+	background-color: #FFE93B;
+	font-size: 14px;
+	font-weight: bold;
+	color: green;
+}
+.modifyOrderBtn   {
+	width:100%;
+	height: 40px;
+	border-radius: 6px;
+	background-image: inherit;
+	background-color: #FFE93B;
+	font-size: 14px;
+	font-weight: bold;
+	color: green;
+}
+.deleteFromOrderBtn   {
+	width:100%;
+	height: 40px;
+	border-radius: 6px;
+	background-image: inherit;
+	background-color: #FFE93B;
+	font-size: 14px;
+	font-weight: bold;
+	color: red;
+}
+.requestDeliveryBtn {
+	width:80%;
+	height: 40px;
+	border-radius: 6px;
+	background-image: inherit;
+	background-color: #FFE93B;
+	font-size: 14px;
+	font-weight: bold;
+	color: green;
+}
+.g2gbtn   {
+	height: 40px;
+	border-radius: 6px;
+	background-image: inherit;
+	background-color: #FFE93B;
+	font-size: 14px;
+	font-weight: bold;
+	color: green;
+}
+.yesBtn   {
+	width: 40%;
+	height: 40px;
+	border-radius: 6px;
+	background-image: inherit;
+	background-color: #FFE93B;
+	font-size: 14px;
+	font-weight: bold;
+	color: green;
+}
+.noBtn   {
+	width: 40%;
+	height: 40px;
+	border-radius: 6px;
+	background-image: inherit;
+	background-color: #FFE93B;
+	font-size: 14px;
+	font-weight: bold;
+	color: red;
+}
+.leftBtn   {
+	width: 40%;
+	height: 40px;
+	border-radius: 6px;
+	background-image: inherit;
+	background-color: #FFE93B;
+	font-size: 12px;
+	font-weight: bold;
+	color: green;
+	line-height: normal !important;
+}
+.rightBtn   {
+	width: 40%;
+	height: 40px;
+	border-radius: 6px;
+	background-image: inherit;
+	background-color: #FFE93B;
+	font-size: 12px;
+	font-weight: bold;
+	color: green;
+	line-height: normal !important;
+}
+.findNearbyRestaurantBtn {
+	width: 80%;
+	height: 40px;
+	border-radius: 6px;
+	background-image: inherit;
+	background-color: #FFE93B;
+	font-size: 12px;
+	font-weight: bold;
+	color: green;
+}
+.marginless {
+	margin: 0px !important;
+}
+
+/* items */
+.restaurantMenuCategoryItem {
+	height: 100px;
+}
+.restaurantMenuCategoryItemSide {
+}
+.restaurantMenuCategoryItemContainer {
+	width: 95%;
+	height: 100px;
+	float: left;
+}
+.restaurantMenuCategoryItemSideContainer {
+	width: 85%;
+	float: left;
+}
+.restaurantMenuCategoryAddItemName {
+	max-height: 48px;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 14px;
+	color: #FFE93B;
+	overflow: hidden;
+}
+.restaurantMenuCategoryAddItemDescription {
+	font-size: 10px;
+	font-weight: normal;
+	white-space: normal;
+	margin-bottom: 6px;
+	color: #EEF5B1;
+	overflow: hidden;
+}
+.restaurantMenuCategoryItemDetails {
+	width: 70%;
+	height: 100px;
+	float: left;
+	overflow: hidden;
+}
+.restaurantMenuCategoryItemPrice {
+	color: green;
+	float: right;
+	font-weight: bolder;
+	width: 25%;
+}
+.restaurantMenuCategoryItemSidePrice {
+	color: green;
+	float: right;
+	font-weight: bolder;
+	width: 25%;
+	text-align: left;
+}
+.restaurantMenuCategoryAddItemPrice {
+	color: green;
+	font-weight: bolder;
+}
+
+.categoryItemContainerCentered {
+	padding-bottom: 6px;
+}
+
+
+
+
+.specialInstructionsContainer {
+	width: 100%;
+	margin-bottom: 6px;
+}
+.orderItemSpecialInstructions {
+	font-size: 8px;
+}
+.orderItemQuantity {
+	height: 100%;
+}
+.orderItemInCartQuantity {
+	height: 100%;
+	float:left;
+	width: 20px;
+	font-size: 14px;
+}
+.orderItemInCartXSymbol {
+	float:left;
+	margin-left: 10px;
+	margin-right: 10px;
+	font-size: 14px;
+}
+.orderItemInCartName {
+	float:left;
+	font-size: 14px;
+}
+.orderItemInCartPrice {
+	color: green;
+	float: right;
+	font-weight: bolder;
+}
+.orderItemInCartSpecialInstructions {
+	font-size: 10px;
+	float:left;
+	color: #EEF5B1;
+}
+.emptyOrderItemImg {
+	width: 100%;
+}
+.emptyOrderItemParagrapgh {
+	width: 100%;
+	text-align: center;
+	font-size: 14px;
+	font-style: italic;
+}
+.totalOrderContainer {
+	width: 100%;
+}
+.totalOrderLabel {
+	float:left;
+	font-style: oblique;
+}
+.totalOrderPrice {
+	color: green;
+	float: right;
+	font-style: oblique;
+	font-weight: bolder;
+}
+.totalOrderCheckout {
+	float:left;
+	width: 100%;
+	text-align: center;
+	font-style: oblique;
+	margin-top: -5px;
+}
+
+/* registration screen */
+.registrationTabBar .mblTabBarTabBar  {
+	border-radius: 0px;
+}
+.registrationTabBar .mblTabButtonSelected  {
+	border-radius: 0px;
+}
+.registrationTabButton {
+	height: 100%;
+}
+.registrationTabButton .mblTabBarButtonLabel {
+	white-space: normal;
+	text-align: center;
+	color: #EEF5B1;
+	height: 100%;
+	line-height: 3em;
+}
+.registrationTabButton .mblTabBarButtonIconArea {
+	margin-top: 5px;
+}
+.registrationTabBar .mostLeftRadiusTabBarButton {
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+.registrationTabBar .mostRightRadiusTabBarButton {
+	border-top-right-radius: 8px;
+	border-bottom-right-radius: 8px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+}
+.registrationTabBar .middleRadiusTabBarButton {
+	border-radius: 0px;
+}
+.registrationFieldContainer {
+	margin-bottom: 10px;
+	padding-left: 10px; padding-right: 10px;
+}
+.registrationFieldTitle {
+	width: 130px;
+	margin-right: 5px;
+}
+.registrationNextBtnContainer {
+	height: 60px;
+}
+.registrationNextBtn {
+	background-image: url(../img/next-icon_32x32.png);
+	border-radius: 45;
+	width: 32px;
+	height: 32px;
+	background-color: #333333;
+	border-style: none;
+	float: right;
+	margin-top: 10px;
+}
+.registrationNextBtnBlack {
+	background-image: url(../img/next-icon_32x32.png);
+	border-radius: 45;
+	width: 32px;
+	height: 32px;
+	background-color: transparent;
+	border-style: none;
+	float: right;
+	margin-top: 10px;
+}
+.addAnotherPaymentMethodBtn {
+	color: #FFE93B;
+	float: left;
+	background-color: #333333;
+	background-image: none;
+	border: none;
+	margin-top: 10px;
+	padding-right: 5px;
+}
+.addAnotherPaymentMethodBtnBlack {
+	color: #FFE93B;
+	float: left;
+	background-color: transparent;
+	background-image: none;
+	border: none;
+	margin-top: 10px;
+	padding-right: 5px;
+}
+.nextPaymentMethodBtnImg {
+	float: left;
+	background-color: #333333;
+	border: none;
+	margin-top: 8px;
+	width: 12px;
+	height: 12px;
+}
+.addAnotherPaymentMethodBtnImg {
+	float: left;
+	background-color: #333333;
+	border: none;
+	margin-top: 19px;
+	width: 12px;
+	height: 12px;
+}
+.addAnotherAddressBtn {
+	color: #FFE93B;
+	float: left;
+	background-color: #333333;
+	background-image: none;
+	border: none;
+	margin-top: 10px;
+	padding-right: 5px;
+}
+.addAnotherAddressBtnBlack {
+	color: #FFE93B;
+	float: left;
+	background-color: transparent;
+	background-image: none;
+	border: none;
+	margin-top: 10px;
+	padding-right: 5px;
+}
+.nextPaymentMethodBtn {
+	color: #FFE93B;
+	float: left;
+	background-color: #333333;
+	background-image: none;
+	border: none;
+	/* margin-top: 8px; */
+	padding-right: 5px;
+}
+.previousPaymentMethodBtn {
+	color: #FFE93B;
+	float: left;
+	background-color: #333333;
+	background-image: none;
+	border: none;
+	/* margin-top: 8px; */
+	padding-right: 5px;
+}
+.addAnotherAddressBtnImg {
+	float: left;
+	background-color: #333333;
+	border: none;
+	margin-top: 19px;
+	width: 12px;
+	height: 12px;
+}
+.previousPaymentMethodBtnImg {
+	float: left;
+	background-color: #333333;
+	border: none;
+	margin-top: 8px;
+	width: 12px;
+	height: 12px;
+}
+.deletePaymentMethodBtn {
+	color: #FFE93B;
+	float: right;
+	background-color: #333333;
+	background-image: none;
+	border: none;
+	/* margin-top: 8px; */
+	padding-right: 5px;
+}
+.deleteAddressBtn {
+	color: #FFE93B;
+	float: right;
+	background-color: #333333;
+	background-image: none;
+	border: none;
+	/* margin-top: 10px; */
+	padding-right: 5px;
+}
+.previousNextButtonsContainer {
+	width: 100%;
+	height: 30px;
+}
+.registrationTabContainer {
+	height: 100% !important;
+	font-size: 12 !important;
+}
+.tabContainer {
+	height: 100% !important;
+}
+.registratoinView {
+	height: 100%
+}
+.thatsItImg {
+	width: 75%;
+}
+.thatsItText {
+	font-size: 24px;
+}
+.thatsItImgContainer{
+	text-align: center;
+	margin-bottom: 20px;
+}
+.nextButton {
+	margin-top: 10px;	/* margin above the next icon */
+	line-height: 32px; /* size of the icon */
+	height: 32px;
+}
+.selectAddressOrPaymentMethodBtnImg {
+	float: left;
+	background-color: #333333;
+	border: none;
+	margin-top: 2px;
+	width: 12px;
+	height: 12px;
+}
+/* checkout screen */
+.checkoutFieldContainer {
+	margin-bottom: 5px;
+	height: 20px;
+	float: left;
+	width: 100%;
+}
+.checkoutSpecialInstructionsTitle {
+	font-size: 12;
+}
+.checkoutSpecialInstructionsTitleContainer {
+	margin-bottom: 5px;
+	float: left;
+	width: 100%;
+}
+.checkoutSpecialInstructionsFieldContainer {
+	margin-bottom: 10px;
+	height: 40px;
+	float: left;
+	width: 100%;
+}
+.checkoutFieldTitle {
+	/* width: 130px; */
+	margin-right: 5px;
+}
+.checkoutPriceField {
+	color:green;
+	font-weight: bolder;
+}
+.tipsContainer {
+	float: left;
+	height: 100px;
+}
+.tipsTitle {
+	text-align: center;
+}
+.tipsDescription{
+	text-align: center;
+	font-style: italic;
+	font-size: 10;
+}
+.checkoutScrollablePane {
+	height: 490px;
+}
+.checkoutScrollablePane .mblScrollableViewContainer {
+	
+}
+.checkoutRoundRect {
+	height: 470px;
+}
+.tipsButtonsContainer {
+	margin-top: 5px;
+}
+.tipsButtonContainer {
+	width: 25%;
+	text-align: center;
+	float: left;
+}
+.checkoutBtnFieldContainer {
+	height: 50px;
+}
+.tipsButton {
+	border-radius: 45;
+	width: 50px;
+	height: 50px;
+	line-height: 50px; /* center vertically */
+	text-align: center; /* center horizontally */
+	background-color: #333333;
+	color: #FFE93B;
+}
+.tipsButtonSelected {
+	border-radius: 45;
+	width: 50px;
+	height: 50px;
+	line-height: 50px; /* center vertically */
+	text-align: center; /* center horizontally */
+	background-color: #000000;
+	color: #FFE93B;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#004504));
+  	background-image: linear-gradient(to bottom, #004504 100%, #000000 0%);
+}
+.placeOrderBtn   {
+	width:100%;
+	height: 40px;
+	border-radius: 6px;
+	background-image: inherit;
+	color: black;
+	background-color: #FFE93B;
+	font-size: 14px;
+	font-weight: bold;
+	margin-top: 25px;
+}
+
+#registrationTabContainerHeader  .mblHeadingSpanTitle {
+	font-family: abeezee !important;
+}
+
+/* Splash Screen */
+.g2gBody {
+	background-image: url(../img/bg.png);
+	background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+#splashScreenDiv {
+  width: 100%;
+/*   height: 100%; */
+  text-align: center;
+}
+#splashScreenBeta {
+	color: red;
+	font-size: 10;
+	text-align: center;
+}
+#splashScreenApplicationName {
+	margin-top: 75px;
+	font-size: 38px;
+	font-weight: bold;
+}
+#splashScreenApplicationSlogan {
+	margin-top: 5px;
+	font-size: 16px;
+	font-weight: bold;
+}
+#splashScreenSignInButton {
+	margin-top: 50px;
+}
+#splashScreenSignUpButton {
+	margin-top: 10px;
+}
+#splashScreenJustLetMeInButton {
+	margin-top: 10px;
+}
+#splashScreenOrWord {
+	margin-top: 25px;
+	text-align: center;
+	width: 100%;
+	font-weight: bold;
+}
+#signInBtn {
+	width: 200px;
+	height: 40px;
+	border-radius: 6px;
+	background-image: inherit;
+	color: black;
+	background-color: #FFE93B;
+	font-size: 14px;
+	font-weight: bold;
+}
+#signUpBtn {
+	width: 200px;
+	height: 40px;
+	border-radius: 6px;
+	background-image: inherit;
+	color: black;
+	background-color: #FFE93B;
+	font-size: 14px;
+	font-weight: bold;
+}
+#justLetMeInBtn {
+	width: 200px;
+	height: 40px;
+	border-radius: 6px;
+	background-image: inherit;
+	color: black;
+	background-color: #FFE93B;
+	font-size: 14px;
+	font-weight: bold;
+}
+#needYourZipCodeText {
+	margin-bottom: 10px;
+}
+/* dialog box */
+.messageDialogText {
+	color: #FFE93B;
+}
+.announcementDialogText {
+	color: black;
+}
+.messageDialogSmallText {
+	color: #FFE93B;
+	font-size: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.loadingDialogText {
+	color: #FFE93B;
+	margin-top: 10px;
+	font-size: 12px;
+}
+
+.ellipsisText {
+	width: 100%;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+/* popups */
+.paymentMethodListItem {
+	float: left;
+	text-align: -webkit-left;
+	width: 100%;
+	font-size: 10px;
+}
+.paymentMethodListItem .cardNumber {
+	float: left;
+	width: 95%;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	text-transform: capitalize;
+}
+.paymentMethodListItem .cardNickname {
+	font-size: 16px;
+	float:left;
+	width: 95%;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	margin-bottom: 6px;
+	text-transform: capitalize;
+}
+.addressListItem {
+	font-size: 10px;
+	float: left;
+	text-align: -webkit-left;
+}
+.addressListItem .streetAddress {
+	float:left;
+	font-size: 16px;
+	width: 95%;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	margin-bottom: 6px;
+	text-transform: capitalize;
+}
+.addressListItem .addressDetails {
+	float: left;
+	width: 95%;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	text-transform: capitalize;
+}
+
+
+/* overrides */
+.g2gMblRoundRectList .mblListItem {
+	height: 60px;
+}
+.mblListItem .bigListItem {
+	height: 200px;
+}
+.addOrderItemItemLabel .mblRoundRectCategory {
+	margin: 0px;
+}
+.bigMblRoundRectCategory {
+	height: 100%;
+	width: 100%
+}
+.mblToolBarButtonBody {
+	border-bottom-color: #333333;
+}
+.mblColorDefault {
+	color: inherit;
+	background-color: inherit;
+	background-image: inherit;
+}
+.mblToolBarButtonArrow {
+	display: none;
+}
+.mblDomButtonDarkBluePlus  {
+	background-color: inherit;
+	background-image: inherit;
+}
+.mblSimpleDialogDecoration{
+	background-color: inherit;
+	border: 3px solid #333333;
+}
+
+.mblDomButtonDarkBlueMinus > div {
+  border-color: #000000;
+  background-color: red;
+  background-image: inherit;
+}
+.mblDomButtonDarkBluePlus > div {
+  border-color: #000000;
+  background-color: green;
+  background-image: inherit;
+}
+.mblTextArea {
+	border-radius: 6px;
+}
+.mblTabBarTabBar {
+	background-image: linear-gradient(to bottom, #333333 0%, #000000 100%);
+}
+.mblTabBarTabBar .mblTabBarButtonSelected  {
+	background-image: linear-gradient(to bottom, #FFE93B 0%, #FFE93B 100%);
+}
+.mblTabBarTabBar .mblTabBarButtonLabel {
+	color: #FFE93B;
+}
+.mblTabBarTabBar .mblTabBarButtonSelected .mblTabBarButtonLabel {
+	color: #000000;
+}
+.mblTextBox {
+	border-radius: 6px;
+}
+.mblBackground {
+	background-color: #000000;
+}
+.mblToolBarButtonText .mblToolBarButtonLabel {
+	color: #FFE93B;
+}
+.mblListItem {
+	padding-top: 5px;
+	line-height: inherit;	
+}
+.mblHeadingDivTitle {
+	font-family: Abeezee !important;
+}
+.backBtnImg .mblToolBarButtonBody {
+	width: 32px;
+	height: 32px;
+	background-image: url(../img/back-icon_32x32.png);
+	padding: 0px;
+}
+.signoutBtnImg .mblToolBarButtonBody {
+	width: 32px;
+	height: 32px;
+	background-image: url(../img/signout.png);
+	padding: 0px;
+}
+.mblToolBarButton  {
+	border-style: none;
+}
+.mblToolBarButtonBody {
+	border-style: none;
+}
+
+.centerYellowTitle {
+	text-align: center;
+	color: #FFE93B;
+}
+.centerYellowItalicDescription{
+	text-align: center;
+	font-style: italic;
+	font-size: 10;
+	color: #FFE93B;
+}
+.centerRedItalicWarning{
+	text-align: center;
+	font-style: italic;
+	font-size: 10;
+	color: #F59191;
+}
+.trackorderlabel {
+	height: 60px;
+	margin-bottom: 10px;
+}
+.trackordercontainer {
+	margin: 0px;
+	padding-top: 5px;
+	padding-left: 5px;
+}
+.etacol {
+	width: 100%;
+}
+#notificationDialog {
+	width: 54px;
+	height: 104px;
+    border-top-left-radius: 45px;
+    border-top-right-radius: 45px;
+    
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    
+    background-color: #FFE93B;
+    padding: 0px;
+    border: 1px;
+    /* border-style: solid; */
+    /* border-color: #333333; */
+}
+#ongoingOrdersCount {
+	width: 100%;
+	text-align: center;
+	font-weight: bold;
+	margin-top: 5px;
+	margin-bottom: 0px;
+}
+#ongoingOrdersText {
+	font-weight: bolder;
+	font-size: 10px;
+	width: 100%;
+	margin-bottom: 0px;
+}
+.trackOrderItemsList {
+	border: none;
+}
+.trackOrderItemsList > li {
+	border: none;
+}
+.trackedOrderItemImg {
+	width: 20px;
+	height: 20px;
+	float: left;
+}
+.trackedOrderItemQuantity {
+	height: 100%;
+	float:left;
+	width: 20px;
+	font-size: 14px;
+}
+.trackedOrderItemXSymbol {
+	float:left;
+	margin-left: 10px;
+	margin-right: 10px;
+	font-size: 14px;
+}
+.trackedOrderItemName {
+	float:left;
+	font-size: 14px;
+	width: 140px !important;
+}
+.trackedOrderItemSpecialInstructions {
+	font-size: 10px;
+	float:left;
+	color: #EEF5B1;
+}
+body {
+	 font-family: abeezee !important;
+}
+
+ @-webkit-keyframes heartbeating Safari and Chrome {
+  to { -webkit-transform: rotateY(360deg); }
+  to { -webkit-transform: scale(1.3); }
+  0% {width: 50px;height: 50px;}
+  50% {width: 70px;height: 70px;}
+  100% {width: 50px;height: 50px;}
+  0% { -webkit-transform: scale(1.2);}
+  5% { -webkit-transform: scale(1.4);}
+  10% { -webkit-transform: scale(1.2);}
+  15% { -webkit-transform: scale(1.3);}
+  20% { -webkit-transform: scale(1.2);}
+  100% { -webkit-transform: scale(1.2);}
+}
+@keyframes heartbeating {
+  to { -webkit-transform: rotateY(360deg); }
+  to { -webkit-transform: scale(1.3); }
+  0% {width: 50px;height: 50px;}
+  50% {width: 70px;height: 70px;}
+  100% {width: 50px;height: 50px;}
+  0% { -webkit-transform: scale(1.2);}
+  5% { -webkit-transform: scale(1.4);}
+  10% { -webkit-transform: scale(1.2);}
+  15% { -webkit-transform: scale(1.3); }
+  20% { -webkit-transform: scale(1.2);}
+  100% { -webkit-transform: scale(1.2);}
+}
+.heartbeating {
+  -webkit-animation: heartbeating 2s linear infinite;
+  -moz-animation: heartbeating 2s linear infinite;
+  -ms-animation: heartbeating 2s linear infinite;
+  -o-animation: heartbeating 2s linear infinite;
+  animation: heartbeating 2s linear infinite;
+} 
+.notificationImage {
+	border-style: solid;
+	border-width: 1px; 
+	border-color: #FFE93B; 
+	height: 45px; 
+	width: 45px; 
+	border-radius: 45px;
+}
+
+#driverActiveOrdersRoundRectList > li {
+	height: 80px;
+}
+#itemsRoundRectList > li {
+	height: 80px;
+}
+.driverOrdersCustomerCity {
+	font-size: 12px;
+}
+.driverOrdersStatus {
+	font-size: 12px;
+}
+.topMargin10px {
+	margin-top: 10px;
+}
+.driverOrdersCustomerName {
+	font-weight: bold;
+	margin-right: 5px;
+	color: #FFE93B;
+}
+.driverOrderItem {
+    border-left-style: solid;
+    border-left-color: #FFE93B;
+    padding-left: 10px;
+    height: 95%;
+}
+#orderIdField, #customerNameField, #orderRestaurantNameField {
+	font-size: 16px;
+	text-align: center;
+	font-weight: bolder;
+}
+#orderStatusField, #customerCityField1, #orderETAField, #orderRestaurantLogoDiv {
+	font-size: 14px;
+	text-align: center;
+}
+#customerAddress1Field, #customerOrderAddressSpecialInstructionsField, #customerProfileAddressSpecialInstructionsField, #customerPhoneField ,#orderRestaurantAddressField {
+	font-size: 12px;
+	text-align: center;
+}
+.g2gRoundRectCategory {
+	color: black;
+	font-size: 12px;
+	font-weight: bolder;
+	font-style: italic;
+	margin: 0px;
+}
+#orderRestaurantLogoImg {
+	width: 32px;
+	height: 32px;
+	text-align: center;
+}
+#driverDurationField {
+	font-size: 12px;
+	text-align: center;
+}
+#driverWelcomeField {
+	font-size: 16px;
+	text-align: center;
+	font-weight: bolder
+}
+#driverStatusField{
+	font-size: 12px;
+	text-align: center;
+}
+#clockInClockOutBtn {
+	width: 100px;
+    height: 60px;
+    border-radius: 6px;
+    background-image: inherit;
+    color: #FFE93B;
+    background-color: black;
+    font-size: 14px;
+    font-weight: bold;
+    border-color: #FFE93B;
+    border-width: 4;
+}

@@ -1,0 +1,93 @@
+<project name="g2g-control" default="deploy" basedir=".">
+  <description>
+    Copies the resources that should be deployed to Openshift to the dist directory.
+	Replaces the required values
+  </description>
+  <!-- set global properties for this build -->
+  <property name="src" location="."/>
+  <property name="target" location="../../build/g2g-control/test"/>
+  <property name="openShiftDir" location="../../OpenShift_test_git_repository/g2gcontrolcenter"/>
+	
+	<macrodef name = "git">
+	    <attribute name = "command" />
+	    <attribute name = "dir" default = "" />
+	    <element name = "args" optional = "true" />
+	    <sequential>
+	        <echo message = "git @{command}" />
+	        <exec executable = "git" dir = "@{dir}">
+	            <arg value = "@{command}" />
+	            <args/>
+	        </exec>
+	    </sequential>
+	</macrodef>
+
+  <target name="clean">
+    <!-- Create the time stamp -->
+    <tstamp/>
+	<!-- Delete the ${target} directory treed -->
+    <delete dir="${target}"/>
+	<mkdir dir="${target}"/>
+  </target>
+
+  <target name="copy" depends="clean" description="Collecting the needed files and copy them to test and prod">
+		<copy todir="${target}/node_modules">
+	    	<fileset dir="${src}/node_modules"/>
+	  	</copy>
+		<copy todir="${target}/static">
+	    	<fileset dir="${src}/static"/>
+	  	</copy>
+	  	<copy todir="${target}/views">
+		    	<fileset dir="${src}/views"/>
+		  	</copy>
+		<copy todir="${target}">
+	    	<fileset file="${src}/server.js"/>
+	  	</copy>
+		<copy todir="${target}">
+	    	<fileset file="${src}/package.json"/>
+	  	</copy>
+
+  </target>
+    	
+	<target name="replace" depends="copy" description="Replacing the dynamic values">
+  		<replace file="${target}/static/g2g/js/G2GControlCenterApplication.js" token="#G2G_BACKEND_SERVER_URL#" value="http://g2gservices-g2gtestserver.rhcloud.com" summary="yes"></replace>
+  </target>
+
+	<target name="clearOpenshiftDir" depends="replace" description="Clearing Openshift Directory">
+			<delete dir="${openShiftDir}/views"/>
+			<delete dir="${openShiftDir}/static"/>
+			<delete dir="${openShiftDir}/node_modules"/>
+			<delete file="${openShiftDir}/server.js"/>
+			<delete file="${openShiftDir}/package.json"/>
+		</target>
+		
+		<target name="copyToOpenshiftDir" depends="clearOpenshiftDir" description="Copying application files to Openshift Directory">
+			<copy todir="${openShiftDir}/node_modules">
+		    	<fileset dir="${target}/node_modules"/>
+		  	</copy>
+			<copy todir="${openShiftDir}/views">
+		    	<fileset dir="${target}/views"/>
+		  	</copy>
+		  	<copy todir="${openShiftDir}/static">
+			    	<fileset dir="${target}/static"/>
+			  	</copy>
+			<copy todir="${openShiftDir}">
+		    	<fileset file="${target}/server.js"/>
+		  	</copy>
+			<copy todir="${openShiftDir}">
+		    	<fileset file="${target}/package.json"/>
+		  	</copy>
+		</target>
+		
+		<target name="deploy" depends="copyToOpenshiftDir" description="Deploy application to TEST environment">
+			<git command = "commit" dir="${openShiftDir}" >
+			    <args>
+			    	<arg value = "-a" />
+			    	<arg value = "-m" />
+			        <arg value = "v2.5" />
+			    </args>
+			</git>
+			<git command = "push" dir="${openShiftDir}">
+			</git>
+		</target>
+
+</project>

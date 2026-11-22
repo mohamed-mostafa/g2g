@@ -1,0 +1,35 @@
+-- eta, eta message and rating
+ALTER TABLE `g2g`.`order` ADD COLUMN `eta` DATETIME NOT NULL  AFTER `payment_charge_id` , ADD COLUMN `eta_message` VARCHAR(100) NULL  AFTER `eta` , ADD COLUMN `rating` INT NOT NULL DEFAULT 0  AFTER `eta_message` ;
+update g2g.order set rating = 3;
+
+ALTER TABLE `g2g`.`order` ADD COLUMN `on_time` INT(1) NOT NULL DEFAULT 1  AFTER `rating` ;
+
+update g2g.order set on_time = 1;
+update g2g.order set eta = delivered_at where eta is null;
+update g2g.order set eta = ADDTIME(placed_at, '00:45:00.000') where eta is null;
+
+-- app version
+ALTER TABLE `g2g`.`order` ADD COLUMN `app_version` DECIMAL(10,2) NULL  AFTER `delivery_person_id` ;
+update g2g.order set app_version = 1 where order.discounts = 7;
+update g2g.order set app_version = 2 where order.delivery_charge = 0;
+update g2g.order set app_version = 1 where order.placed_at < MAKEDATE(2015,259); -- 15th of september, date of version 2
+update g2g.order set app_version = 2 where order.app_version is null;
+
+-- credit card info
+ALTER TABLE `g2g`.`order` ADD COLUMN `ccinfo` VARCHAR(26) NULL AFTER `payment_charge_id`;
+
+-- advertisement
+CREATE  TABLE `g2g`.`advertisement` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `sort_order` INT NOT NULL ,
+  `image` LONGTEXT NOT NULL ,
+  `active` TINYINT NOT NULL DEFAULT 0 ,
+  PRIMARY KEY (`id`) );
+  
+INSERT INTO `advertisement` (`id`,`sort_order`,`image`,`active`) VALUES (1,1,'',0);
+INSERT INTO `advertisement` (`id`,`sort_order`,`image`,`active`) VALUES (2,2,'',0);
+INSERT INTO `advertisement` (`id`,`sort_order`,`image`,`active`) VALUES (3,3,'',0);
+
+ALTER TABLE `g2g`.`order` ADD COLUMN `special_instructions` VARCHAR(1000) NULL  AFTER `total_with_tips` ;
+
+INSERT INTO g2g.user_plan values ('REDUNDANT NIGHT OWL', 'Redundant Night Owls are charged $10 for their first order, and $10 for the next orders.', 10, 10, 0);

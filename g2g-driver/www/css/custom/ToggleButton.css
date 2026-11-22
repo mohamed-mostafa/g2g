@@ -1,0 +1,58 @@
+/* dojox.mobile.ToggleButton */
+.mblToggleButton {
+  position: relative;
+  padding: 0 10px 0 25px;
+  height: 29px;
+  border-width: 1px 1px 1px 1px;
+  border-style: outset;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#333333), to(#161616));
+  background-image: linear-gradient(to bottom, #333333 0%, #161616 100%);
+  font-family: Helvetica;
+  line-height: 29px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  border: 1px solid #000000;
+  border-bottom-color: #000000;
+  border-radius: 0;
+  font-size: 13px;
+  color: #ffe93b;
+}
+.mblToggleButton:disabled {
+  border-color: grey;
+  background-image: none;
+  color: grey;
+  cursor: default;
+}
+.mblToggleButtonSelected {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#000000));
+  background-image: linear-gradient(to bottom, #000000 0%, #000000 100%);
+  color: #333333;
+}
+.mblToggleButtonChecked {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#333333), to(#161616));
+  background-image: linear-gradient(to bottom, #333333 0%, #161616 100%);
+  color: #ffe93b;
+}
+.mblToggleButtonChecked:after {
+  position: absolute;
+  content: "";
+  top: 6px;
+  left: 7px;
+  width: 5px;
+  height: 10px;
+  border-width: 2px;
+  border-style: none solid solid none;
+  -webkit-transform: rotate(45deg) skew(10deg);
+  transform: rotate(45deg) skew(10deg);
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  border-color: #ffe93b;
+}
+.mblToggleButtonChecked.mblToggleButtonSelected {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#000000));
+  background-image: linear-gradient(to bottom, #000000 0%, #000000 100%);
+  color: #333333;
+}
+.mblToggleButtonChecked.mblToggleButtonSelected:after {
+  border-color: #333333;
+}

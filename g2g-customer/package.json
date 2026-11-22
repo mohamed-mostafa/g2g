@@ -1,0 +1,38 @@
+{
+  "devDependencies": {
+    "com.indigoway.cordova.whitelist.whitelistplugin": "1.1.1",
+    "com.ionic.keyboard": "1.0.3",
+    "cordova-plugin-insomnia": "^4.1.0",
+    "cordova-plugin-mauron85-background-geolocation-phonegapbuild": "^0.9.4",
+    "onesignal-cordova-plugin": "^1.12.3",
+    "org.apache.cordova.device": "0.2.3",
+    "org.apache.cordova.geolocation": "0.3.12",
+    "org.apache.cordova.inappbrowser": "0.6.0",
+    "org.apache.cordova.splashscreen": "1.0.0",
+    "org.apache.cordova.statusbar": "0.1.4"
+  },
+  "cordova": {
+    "plugins": {
+      "org.apache.cordova.geolocation": {},
+      "org.apache.cordova.splashscreen": {},
+      "org.apache.cordova.statusbar": {},
+      "org.apache.cordova.device": {},
+      "com.indigoway.cordova.whitelist.whitelistplugin": {},
+      "com.ionic.keyboard": {},
+      "org.apache.cordova.inappbrowser": {},
+      "cordova-plugin-mauron85-background-geolocation-phonegapbuild": {},
+      "cordova-plugin-insomnia": {},
+      "onesignal-cordova-plugin": {},
+      "nl.x-services.plugins.insomnia": {},
+      "cordova-plugin-device": {}
+    },
+    "platforms": [
+      "browser"
+    ]
+  },
+  "dependencies": {
+    "cordova-browser": "^6.0.0",
+    "cordova-plugin-device": "^2.0.3",
+    "cordova-plugin-googleplayservices": "^19.0.3"
+  }
+}

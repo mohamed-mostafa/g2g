@@ -1,0 +1,23 @@
+C:\Work\g2g\git_repository\g2g-driver\platforms\android\ant-build\classes.dex : \
+C:\Work\g2g\git_repository\g2g-driver\platforms\android\ant-build\classes\com\g2g\mobile\driver\BuildConfig.class \
+C:\Work\g2g\git_repository\g2g-driver\platforms\android\ant-build\classes\com\g2g\mobile\driver\CordovaApp.class \
+C:\Work\g2g\git_repository\g2g-driver\platforms\android\ant-build\classes\com\g2g\mobile\driver\R$attr.class \
+C:\Work\g2g\git_repository\g2g-driver\platforms\android\ant-build\classes\com\g2g\mobile\driver\R$drawable.class \
+C:\Work\g2g\git_repository\g2g-driver\platforms\android\ant-build\classes\com\g2g\mobile\driver\R$string.class \
+C:\Work\g2g\git_repository\g2g-driver\platforms\android\ant-build\classes\com\g2g\mobile\driver\R$xml.class \
+C:\Work\g2g\git_repository\g2g-driver\platforms\android\ant-build\classes\com\g2g\mobile\driver\R.class \
+C:\Work\g2g\git_repository\g2g-driver\platforms\android\ant-build\classes\org\apache\cordova\splashscreen\SplashScreen$1.class \
+C:\Work\g2g\git_repository\g2g-driver\platforms\android\ant-build\classes\org\apache\cordova\splashscreen\SplashScreen$2.class \
+C:\Work\g2g\git_repository\g2g-driver\platforms\android\ant-build\classes\org\apache\cordova\splashscreen\SplashScreen$3.class \
+C:\Work\g2g\git_repository\g2g-driver\platforms\android\ant-build\classes\org\apache\cordova\splashscreen\SplashScreen$4.class \
+C:\Work\g2g\git_repository\g2g-driver\platforms\android\ant-build\classes\org\apache\cordova\splashscreen\SplashScreen$5$1.class \
+C:\Work\g2g\git_repository\g2g-driver\platforms\android\ant-build\classes\org\apache\cordova\splashscreen\SplashScreen$5.class \
+C:\Work\g2g\git_repository\g2g-driver\platforms\android\ant-build\classes\org\apache\cordova\splashscreen\SplashScreen$6$1.class \
+C:\Work\g2g\git_repository\g2g-driver\platforms\android\ant-build\classes\org\apache\cordova\splashscreen\SplashScreen$6.class \
+C:\Work\g2g\git_repository\g2g-driver\platforms\android\ant-build\classes\org\apache\cordova\splashscreen\SplashScreen$7.class \
+C:\Work\g2g\git_repository\g2g-driver\platforms\android\ant-build\classes\org\apache\cordova\splashscreen\SplashScreen.class \
+C:\Work\g2g\git_repository\g2g-driver\platforms\android\ant-build\classes\org\apache\cordova\statusbar\StatusBar$1.class \
+C:\Work\g2g\git_repository\g2g-driver\platforms\android\ant-build\classes\org\apache\cordova\statusbar\StatusBar$2.class \
+C:\Work\g2g\git_repository\g2g-driver\platforms\android\ant-build\classes\org\apache\cordova\statusbar\StatusBar$3.class \
+C:\Work\g2g\git_repository\g2g-driver\platforms\android\ant-build\classes\org\apache\cordova\statusbar\StatusBar.class \
+C:\Work\g2g\git_repository\g2g-driver\platforms\android\ant-build\dexedLibs\classes-f0a8e8308a6643bdf111fc844c0b18ca.jar \

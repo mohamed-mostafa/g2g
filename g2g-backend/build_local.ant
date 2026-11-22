@@ -1,0 +1,47 @@
+<project name="g2g-backend" default="moveToOpenShift" basedir=".">
+  <description>
+    Copies the resources that should be deployed to Openshift to the dist directory.
+	Replaces the required values
+  </description>
+  <!-- set global properties for this build -->
+  <property name="src" location="."/>
+  <property name="target" location="../../build/g2g-backend/local"/>
+
+  <target name="clean">
+    <!-- Create the time stamp -->
+    <tstamp/>
+	<!-- Delete the ${target} directory tree
+    <delete dir="${target}"/>
+	<mkdir dir="${target}"/> -->
+  </target>
+
+  <target name="copy" depends="clean" description="Collecting the needed files and copy them to test and prod">
+		<copy todir="${target}/node_modules">
+	    	<fileset dir="${src}/node_modules"/>
+	  	</copy>
+		<copy todir="${target}/g2g_modules">
+	    	<fileset dir="${src}/g2g_modules"/>
+	  	</copy>
+	  	<copy todir="${target}/static">
+		    	<fileset dir="${src}/static"/>
+		  	</copy>
+		<copy todir="${target}">
+	    	<fileset file="${src}/server.js"/>
+	  	</copy>
+		<copy todir="${target}">
+	    	<fileset file="${src}/package.json"/>
+	  	</copy>
+  </target>
+    	
+	<target name="replace" depends="copy" description="Replacing the dynamic values">
+  		<replace file="${target}/g2g_modules/adapters/g2g_payment_adapter.js" token="#STRIPE_PRIVATE_KEY#" value="sk_test_ISdKcA1TpBVw3jVSmLr5JXMX" summary="yes"></replace>
+		<replace file="${target}/server.js" token="#ENABLE_DAEMONS#" value="false" summary="yes"></replace>
+		
+		<replace file="${target}/g2g_modules/adapters/g2g_push_notifications_adapter.js" token="#ONE_SIGNAL_APP_ID#" value="67653f6e-869c-443d-8da7-e447b8110ed9" summary="yes"></replace>
+		<replace file="${target}/g2g_modules/adapters/g2g_push_notifications_adapter.js" token="#ONE_SIGNAL_REST_API_AUTH#" value="NGRjNjY1OGQtNDM4MC00Y2I0LTllNTctZTBjNWNmY2YzNDAw" summary="yes"></replace>
+  </target>
+
+  <target name="moveToOpenShift" depends="replace" description="Copies the files to openshift's local repository, to be pushed manually">
+  </target>
+
+</project>

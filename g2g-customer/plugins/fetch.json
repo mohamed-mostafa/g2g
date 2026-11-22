@@ -1,0 +1,79 @@
+{
+  "es6-promise-plugin": {
+    "source": {
+      "type": "git",
+      "url": "https://github.com/vstirbu/PromisesPlugin.git",
+      "subdir": "."
+    },
+    "is_top_level": false,
+    "variables": {}
+  },
+  "org.apache.cordova.splashscreen": {
+    "source": {
+      "type": "registry",
+      "id": "org.apache.cordova.splashscreen"
+    }
+  },
+  "org.apache.cordova.statusbar": {
+    "source": {
+      "type": "registry",
+      "id": "org.apache.cordova.statusbar"
+    }
+  },
+  "org.apache.cordova.geolocation": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-geolocation@0.3.12"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-whitelist": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-whitelist"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-mauron85-background-geolocation-phonegapbuild": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-mauron85-background-geolocation-phonegapbuild@^0.9.4"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-googleplayservices": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-googleplayservices"
+    },
+    "is_top_level": false,
+    "variables": {}
+  },
+  "nl.x-services.plugins.insomnia": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-insomnia@^4.1.0"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "onesignal-cordova-plugin": {
+    "source": {
+      "type": "registry",
+      "id": "onesignal-cordova-plugin@^1.12.3"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-device": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-device@^2.0.3"
+    },
+    "is_top_level": true,
+    "variables": {}
+  }
+}

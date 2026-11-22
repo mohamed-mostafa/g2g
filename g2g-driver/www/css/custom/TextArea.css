@@ -1,0 +1,15 @@
+/* dojox.mobile.TextArea */
+.mblTextArea {
+  padding: 4px 1px;
+  border-width: 1px;
+  border-style: inset;
+  font-family: Helvetica;
+  font-size: 13px;
+  border: 1px solid #000000;
+  border-bottom-color: #000000;
+  border-radius: 0;
+}
+/* dojox.mobile.ExpandingTextArea */
+.mblExpandingTextArea {
+  margin: 2px;
+}

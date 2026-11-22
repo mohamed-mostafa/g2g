@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.g2g.mobile.customer" version="3.1.0" versionCode="20505" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>G2G</name>
+    <description>G2G Customer Mobile Application</description>
+    <author email="eng.mmustafa84@gmail.com" href="http://about.me/eng.mmustafa84">
+        Mohamed Mostafa
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-navigation href="*" />
+    <icon src="icon.png" />
+    <icon gap:platform="ios" height="57" src="icon57.png" width="57" />
+    <icon gap:platform="ios" height="72" src="icon72.png" width="72" />
+    <icon gap:platform="ios" height="114" src="icon114.png" width="114" />
+    <icon gap:platform="ios" height="144" src="icon144.png" width="144" />
+    <icon gap:platform="ios" height="152" src="icon152.png" width="152" />
+    <icon gap:platform="ios" height="76" src="icon76.png" width="76" />
+    <icon gap:platform="ios" height="120" src="icon120.png" width="120" />
+    <gap:splash src="Default.png" />
+    <gap:splash gap:platform="ios" height="480" src="Default.png" width="320" />
+    <gap:splash gap:platform="ios" height="960" src="Default@2x.png" width="640" />
+    <gap:splash gap:platform="ios" height="1136" src="Default-568h@2x.png" width="640" />
+    <gap:splash gap:platform="ios" height="1334" src="Default-667h@2x.png" width="750" />
+    <gap:splash gap:platform="ios" height="2208" src="Default-Portrait.png" width="1242" />
+    <gap:splash gap:platform="ios" height="1242" src="Default-Landscape.png" width="2208" />
+    <gap:splash gap:platform="ios" height="1024" src="Default-Portrait.png" width="768" />
+    <gap:splash gap:platform="ios" height="768" src="Default-Landscape.png" width="1024" />
+    <gap:splash gap:platform="ios" height="2048" src="Default-Portrait.png" width="1536" />
+    <gap:splash gap:platform="ios" height="1536" src="Default-Landscape.png" width="2048" />
+    <gap:config-file parent="UIStatusBarHidden" platform="ios">
+        <true />
+    </gap:config-file>
+    <gap:config-file parent="UIViewControllerBasedStatusBarAppearance" platform="ios">
+        <false />
+    </gap:config-file>
+    <preference name="orientation" value="portrait" />
+    <preference name="target-device" value="universal" />
+    <preference name="fullscreen" value="true" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="prerendered-icon" value="true" />
+    <preference name="stay-in-webview" value="false" />
+    <preference name="detect-data-types" value="true" />
+    <preference name="exit-on-suspend" value="false" />
+    <preference name="show-splash-screen-spinner" value="true" />
+    <preference name="auto-hide-splash-screen" value="false" />
+    <preference name="disable-cursor" value="false" />
+    <preference name="android-minSdkVersion" value="16" />
+    <preference name="android-installLocation" value="auto" />
+    <preference name="AutoHideSplashScreen" value="false" />
+    <preference name="SplashScreenDelay" value="60000" />
+    <preference name="loadUrlTimeoutValue" value="700000" />
+    <preference name="phonegap-version" value="cli-5.4.1" />
+    <preference name="android-build-tool" value="gradle" />
+    <preference name="permissions" value="none" />
+</widget>

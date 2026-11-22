@@ -1,0 +1,1978 @@
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+	content="width=device-width,height=device-height,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' 'unsafe-eval' https://ssl.gstatic.com https://js.stripe.com http://ajax.googleapis.com https://maps.googleapis.com"> -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' 'unsafe-eval' *">
+<title>g2g</title>
+<!-- application stylesheet will go here -->
+<!-- Need to load the CSS stylesheets for the badge classes you use -->
+<!-- dynamically apply native visual theme according to the browser user agent -->
+<!-- 
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.9.6/dojox/mobile/deviceTheme.js"></script> -->
+<link rel="stylesheet" type="text/css" href="css/custom/custom.css"></link>
+<link rel="stylesheet" type="text/css" href="css/custom/View.css"></link>
+<link rel="stylesheet" type="text/css"
+	href="css/custom/ScrollablePane.css"></link>
+<link rel="stylesheet" type="text/css" href="css/custom/Heading.css"></link>
+<link rel="stylesheet" type="text/css"
+	href="css/custom/RoundRectList.css"></link>
+<link rel="stylesheet" type="text/css" href="css/custom/RoundRect.css"></link>
+<link rel="stylesheet" type="text/css" href="css/custom/Accordion.css"></link>
+<link href="css/common/domButtons/DomButtonBlackRightArrow16.css" rel="stylesheet"/>
+<link href="css/common/domButtons/DomButtonWhiteDownArrow16.css" rel="stylesheet"/>
+<link rel="stylesheet" type="text/css" href="css/custom/FormLayout.css"></link>
+<link rel="stylesheet" type="text/css" href="css/custom/Button.css"></link>
+<link rel="stylesheet" type="text/css" href="css/custom/TextBox.css"></link>
+<link rel="stylesheet" type="text/css" href="css/custom/ListItem.css"></link>
+<link rel="stylesheet" type="text/css" href="css/custom/ToggleButton.css"></link>
+<link rel="stylesheet" type="text/css"
+	href="css/custom/ToolBarButton.css"></link>
+<link rel="stylesheet" type="text/css"
+	href="css/custom/RoundRectCategory.css"></link>
+<link rel="stylesheet" type="text/css" href="css/custom/TabBar.css"></link>
+<link rel="stylesheet" type="text/css" href="css/custom/TextArea.css"></link>
+<link rel="stylesheet" type="text/css" href="css/custom/ValuePicker.css"></link>
+<link rel="stylesheet" type="text/css"
+	href="css/common/domButtons/DomButtonRedBadge.css" />
+<link rel="stylesheet" type="text/css" href="css/g2g.css">
+
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet"/>
+<!-- Custom CSS - Used by tracking order -->
+<link href="css/ordertracking.css" rel="stylesheet">
+<script type="text/javascript">
+	dojoConfig = {
+		async : true,
+		baseUrl : './js/',
+		tlmSiblingOfDojo : false,
+		parseOnLoad : false,
+	};
+</script>
+<!-- dojo bootstrap -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.9.6/dojo/dojo.js"></script>
+<!-- stripte.js -->
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<!-- dojo application code -->
+<script type="text/javascript" src="js/globals.js"></script>
+<!-- Google maps -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcEbRjYjOIMp9CHdO6VJiB3PQFNOtUbBA&callback=LocationObject.init" async defer></script>
+<!-- cordova js files -->
+<script type="text/javascript" src="js/g2g/libraries/PushNotificationsManager.js"></script>
+<script src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+
+<!-- dojo application code -->
+<script type="text/javascript">
+	require(["dojox/mobile/parser",
+	        "dijit/registry",
+	        "g2g/SplashView",
+	        "g2g/DriverSplashView",
+	        "g2g/CustomerSplashView",
+			"g2g/libraries/GPSManager",
+			"g2g/DriverDeliveredOrdersView",
+			"g2g/DoubleButtonDialogView", "g2g/DriverTabContainerView",
+			"g2g/DriverOrder", "g2g/DriverShiftDurationDialog",
+			"g2g/DriverHomeView", "g2g/DriverRegistrationView",
+			"g2g/DriverLoginView",
+			"g2g/DriverActiveOrdersView",
+			/* "g2g/GoogleMapView", */
+			"g2g/LoginView", 
+			"g2g/HomeView",
+			"g2g/RestaurantMenuCategoriesView",
+			"g2g/RestaurantMenuCategoryItemsView", 
+			"g2g/OrderView", 
+			"g2g/MyPricePlanView",
+			"g2g/AddOrderItemView", "g2g/AddOrderItemSidesView",
+			"g2g/ModifyOrderItemView", "g2g/ModifyOrderItemSidesView",
+			"g2g/ProfileTabContainerView", "g2g/TabContainerView",
+			"g2g/OrderTabContainerView", "g2g/RegistrationTabContainerView",
+			"g2g/RegistrationAccountView", "g2g/ProfileAccountView",
+			"g2g/RegistrationPersonalView", "g2g/ProfilePersonalView",
+			"g2g/RegistrationAddressesView", "g2g/ProfileAddressesView", "g2g/AdsDialog",
+			"g2g/FirstTimePaymentsView", "g2g/ProfilePaymentsView", "g2g/ActiveOrdersView",
+			"g2g/RegistrationThatsItView", "g2g/ProfileThatsItView",
+			"g2g/CheckoutView", "g2g/ChooseAddressView", "g2g/OnTheFlyLoginView","g2g/NotificationDialog",
+			"g2g/ChoosePaymentMethodView", "g2g/MessageDialogView", "g2g/OfflineDialogView",
+			"g2g/libraries/StorageManager", "g2g/LoadingDialogView", "g2g/G2GRating",
+			"g2g/PendingOrdersView", "g2g/ForgotPasswordView", "g2g/AnonymousUserZipCodeDialog", "g2g/TrackOrderView",
+			"g2g/OnTheFlyRegistrationAccount", "g2g/OnTheFlyRegistrationPayment", "g2g/OnTheFlyRegistrationAddress",
+			"g2g/ContactUsView", "g2g/YesNoDialogView", "g2g/SingleButtonDialogView",
+			"dojox/mobile/compat",
+			"dojox/mobile/View", "dojox/mobile/ScrollableView",
+			"dojox/mobile/ScrollablePane", "dojox/mobile/SimpleDialog", "dojox/mobile/SwapView",
+			"dojox/mobile/FilteredListMixin", "dojox/mobile/Heading", "dojox/mobile/PageIndicator",
+			"dojox/mobile/Badge", "dojox/mobile/RoundRectList", "dojox/mobile/Pane", "dojox/mobile/GridLayout",
+			"dojox/mobile/RoundRect", "dojox/mobile/FormLayout", "dojox/mobile/ContentPane", "dojox/mobile/Accordion",
+			"dojox/mobile/Button", "dojox/mobile/TabBar", "dojox/mobile/ToggleButton",
+			"dojox/mobile/TabBarButton", "dojox/mobile/TextBox", "dojox/mobile/ValuePickerTimePicker",
+			"dojox/mobile/ListItem", "dojox/mobile/RoundRectCategory",
+			"dojox/mobile/TextArea", "dojox/mobile/Rating",
+			"dojo/domReady!" ], function(_parser, _registry) {
+		// now parse the page for widgets
+		_parser.parse();
+		GlobalObjects.registry = _registry;
+		if (navigator && navigator.splashscreen) {
+			navigator.splashscreen.hide();
+		}
+	});
+</script>
+</head>
+<body style="visibility: hidden;">
+	<!-- An empty screen -->
+	<div id="emptyScreen" data-dojo-type="dojox/mobile/View">G2G is
+		unable to run</div>
+	<div id="loadingDialog" data-dojo-type="g2g/LoadingDialogView" style="z-index: 190;"
+		class="loadingDialog">
+		<div class="dialogImageField">
+			<img src="img/runnerspinner.gif" class="loadingImage"/>
+		</div>
+		<!-- <div id="progressIndicatorContainer"></div> -->
+		<div id="loadingMessageField" class="loadingDialogText ellipsisText"></div>
+	</div>
+	<div id="adsDialog" data-dojo-type="g2g/AdsDialog" data-dojo-props="closeButton: 'true'" class="adsDialog">
+		<div id="swapView0" data-dojo-type="dojox/mobile/SwapView">
+			<div>
+				<img src="img/bg.png" id="ad0" class="adsImage">
+			</div>
+		</div>
+		<div id="swapView1" data-dojo-type="dojox/mobile/SwapView">
+			<div>
+				<img src="img/bg.png" id="ad1" class="adsImage">
+			</div>
+		</div>
+		<div id="swapView2" data-dojo-type="dojox/mobile/SwapView">
+			<div>
+				<img src="img/bg.png" id="ad2" class="adsImage">
+			</div>
+		</div>
+		<div id="adsPageIndicator" data-dojo-type="dojox/mobile/PageIndicator" style="bottom: 0px; position: absolute; background: transparent"></div>
+	</div>
+	
+	<div id="notificationDialog" data-dojo-type="g2g/NotificationDialog" data-dojo-props="closeButton: 'true'" style="z-index: 110;">
+		<img src="img/icon.png" class="notificationImage heartbeating"/>
+		<p id="ongoingOrdersCount"></p>
+		<p id="ongoingOrdersText"></p>
+	</div>
+	<!-- The storage manager -->
+	<div id="storageManager" data-dojo-type="g2g/libraries/StorageManager">
+	</div>
+	<div id="gpsManager" data-dojo-type="g2g/libraries/GPSManager">
+	</div>
+	<div id="contactUs" data-dojo-type="g2g/ContactUsView"
+		data-dojo-props="closeButton: 'true'" class="orderItemDialog">
+		<!-- a rounded rectangle list container -->
+		<!-- <div data-dojo-type="dojox.mobile.RoundRectCategory"> -->
+		<div class="dialogImageField">
+			<img src="img/icon.png" class="dialogImage"/>
+		</div>
+		<div class="contactUsTitle fullWidth">Contact G2G team</div>
+		<div class="fullWidth">
+			<textarea data-dojo-type="dojox.mobile.TextBox"
+				class="contactUsSubjectField fullWidth" id="contactUsSubjectField"
+				placeHolder="Message subject ..." class="specialInstructions blackColor"></textarea>
+		</div>
+		<div class="fullWidth">
+			<textarea data-dojo-type="dojox.mobile.TextArea"
+				class="contactUsMessageField fullWidth" id="contactUsMessageField"
+				placeHolder="Message body .... your feedback is very important to us ..."
+				class="specialInstructions blackColor"></textarea>
+		</div>
+		<div class="centerBtnContainer">
+			<button data-dojo-type="dojox.mobile.Button" id="sendMessageBtn"
+				class="baseBtn greenBtn modifyOrderBtn">Send</button>
+		</div>
+		<!-- </div> -->
+	</div>
+	<div id="forgotPassword" data-dojo-type="g2g/ForgotPasswordView"
+		data-dojo-props="closeButton: 'true'" class="orderItemDialog">
+		<!-- a rounded rectangle list container -->
+		<!-- <div data-dojo-type="dojox.mobile.RoundRectCategory"> -->
+		<div class="contactUsTitle fullWidth">Reset your G2G password</div>
+		<div class="dialogImageField">
+			<img src="img/icon.png" class="dialogImage"/>
+		</div>
+		<div class="fullWidth">
+			<textarea data-dojo-type="dojox.mobile.TextBox"
+				class="contactUsSubjectField fullWidth" id="resetPasswordEmail"
+				placeHolder="Your email address" class="specialInstructions blackColor"></textarea>
+		</div>
+		<div class="centerBtnContainer">
+			<button data-dojo-type="dojox.mobile.Button" id="resetPasswordBtn"
+				class="baseBtn greenBtn modifyOrderBtn">Reset</button>
+		</div>
+		<!-- </div> -->
+	</div>
+	<!-- splash screen -->
+	<div id="splash" data-dojo-type="g2g/SplashView" data-dojo-props="selected:true" class="signin">
+		<div id="splashScreenDiv">
+			<div style="height: 75px;"></div>
+			<div id="splashScreenApplicationName">
+				<img src="img/g2g_logo.png" style="width: 70%" />
+			</div>
+			<div id="splashScreenSignInButton">
+				<button id="iAmCustomerBtn" data-dojo-type="dojox.mobile.Button"
+					data-dojo-props='label: "I&#39;m a Customer"'></button>
+			</div>
+			<div id="splashScreenSignUpButton">
+				<button id="iAmDriverBtn" data-dojo-type="dojox.mobile.Button"
+					data-dojo-props='label: "I&#39;m a Driver"'></button>
+			</div>
+		</div>
+	</div>
+	<div id="customerSplash" data-dojo-type="g2g/CustomerSplashView" class="signin">
+		<!-- <span data-dojo-type="dojox/mobile/ToolBarButton" fixed="top" data-dojo-props='moveTo: "splash", icon:"img/back-icon.png", transition: "fade"' style="float:initial;"></span> -->
+		<div id="customerSplashScreenDiv">
+			<div style="height: 75px;"></div>
+			<div id="customerSplashScreenApplicationName">
+				<img src="img/g2g_logo.png" style="width: 70%" />
+			</div>
+			<div id="customerSplashScreenSignInButton">
+				<button id="signInBtn" data-dojo-type="dojox.mobile.Button"
+					data-dojo-props="label: 'Sign in'"></button>
+			</div>
+			<div id="customerSplashScreenSignUpButton">
+				<button id="signUpBtn" data-dojo-type="dojox.mobile.Button"
+					data-dojo-props="label: 'Sign up'"></button>
+			</div>
+			<div id="splashScreenOrWord">
+				OR
+			</div>
+			<div id="splashScreenJustLetMeInButton">
+				<button id="justLetMeInBtn" data-dojo-type="dojox.mobile.Button"
+					data-dojo-props="label: 'Just let me in'"></button>
+			</div>
+			<div style="margin-top: 10px;">
+				<span class="splashScreenBackLink" onclick="Utilities.returnToSplashFromCustomerSplash();">Back</span>
+			</div>
+		</div>
+	</div>
+	<div id="driverSplash" data-dojo-type="g2g/DriverSplashView" class="signin">
+		<!-- <span data-dojo-type="dojox/mobile/ToolBarButton" fixed="top" data-dojo-props='moveTo: "splash", icon:"img/back-icon.png", transition: "fade"' style="float:initial;"></span> -->
+		<div id="driverSplashScreenDiv">
+			<div style="height: 75px;"></div>
+			<div id="driverSplashScreenApplicationName">
+				<img src="img/g2g_logo.png" style="width: 70%" />
+			</div>
+			<div id="driverSplashScreenSignInButton">
+				<button id="driverSignInBtn" data-dojo-type="dojox.mobile.Button"
+					data-dojo-props="label: 'Sign in'"></button>
+			</div>
+			<div id="driverSplashScreenSignUpButton">
+				<button id="becomeADriverBtn" data-dojo-type="dojox.mobile.Button"
+					data-dojo-props="label: 'Become a driver'"></button>
+			</div>
+			<div style="margin-top: 10px;">
+				<span class="splashScreenBackLink" onclick="Utilities.returnToSplashFromDriverSplash();">Back</span>
+			</div>
+		</div>
+	</div>
+	<div id="yesNoDialog" data-dojo-type="g2g/YesNoDialogView" data-dojo-props="closeButton: 'false'" class="orderItemDialog" style="z-index: 180;">
+		<div data-dojo-type="dojox.mobile.RoundRect" class="marginless">
+			<div class="dialogImageField">
+				<img src="img/icon.png" class="dialogImage"/>
+			</div>
+			<div id="yesNoQuestionFieldField" class="messageDialogText"></div>
+			<div id="yesNoSubtitleField" class="messageDialogSmallText"></div>
+			<div class="centerBtnContainer">
+				<button data-dojo-type="dojox.mobile.Button" id="yesBtn"
+					class="baseBtn greenBtn yesBtn">Yes</button>
+				<button data-dojo-type="dojox.mobile.Button" id="noBtn"
+					class="baseBtn redBtn noBtn">No</button>
+			</div>
+		</div>
+	</div>
+	<div id="singleButtonDialog" data-dojo-type="g2g/SingleButtonDialogView" data-dojo-props="closeButton: 'true'" class="orderItemDialog" style="z-index: 180;">
+		<div data-dojo-type="dojox.mobile.RoundRect" class="marginless">
+			<div class="dialogImageField">
+				<img src="img/icon.png" class="dialogImage"/>
+			</div>
+			<div id="singleButtonQuestionField" class="messageDialogText"></div>
+			<div id="singleButtonSubtitleField" class="messageDialogSmallText"></div>
+			<div class="centerBtnContainer">
+				<button data-dojo-type="dojox.mobile.Button" id="singleButton"
+					class="baseBtn greenBtn g2gbtn">Ok</button>
+			</div>
+		</div>
+	</div>
+	<div id="doubleButtonDialog" data-dojo-type="g2g/DoubleButtonDialogView" data-dojo-props="closeButton: 'true'" class="orderItemDialog" style="z-index: 180;">
+		<div data-dojo-type="dojox.mobile.RoundRect" class="marginless">
+			<div class="dialogImageField">
+				<img src="img/icon.png" class="dialogImage"/>
+			</div>
+			<div id="doubleButtonQuestionField" class="messageDialogText"></div>
+			<div id="doubleButtonSubtitleField" class="messageDialogSmallText"></div>
+			<div class="centerBtnContainer">
+				<button data-dojo-type="dojox.mobile.Button" id="leftButton"
+					class="baseBtn leftBtn g2gbtn">Ok</button>
+					<button data-dojo-type="dojox.mobile.Button" id="rightButton"
+					class="baseBtn rightBtn g2gbtn">Cancel</button>
+			</div>
+		</div>
+	</div>
+	<div id="driverShiftDurationDialog" data-dojo-type="g2g/DriverShiftDurationDialog"
+		data-dojo-props="closeButton: 'true'" class="orderItemDialog">
+		<div data-dojo-type="dojox.mobile.RoundRect" class="marginless">
+			<div class="dialogImageField">
+				<img src="img/icon.png" class="dialogImage"/>
+			</div>
+			<div class="messageDialogText">When do you expect to clock-out ?</div>
+			<div style="margin-bottom: 10px;" class="fullWidth smallItalicText">This will help us plan our availability</div>
+			<div class="registrationFieldContainer">
+				<div class="fullWidth">
+					<div id="driverShiftDurationValuePickerTimePicker" data-dojo-type="dojox.mobile.ValuePickerTimePicker"
+					data-dojo-props='values: ["4", "00"], is24h:false, readOnly: true'></div>
+				</div>
+			</div>
+			<div class="centerBtnContainer">
+				<button data-dojo-type="dojox.mobile.Button" id="driverShiftDurationOkBtn"
+					class="baseBtn greenBtn findNearbyRestaurantBtn">Clock-in</button>
+			</div>
+		</div>
+	</div>
+	<div id="anonymousUserZipCodeDialog" data-dojo-type="g2g/AnonymousUserZipCodeDialog"
+		data-dojo-props="closeButton: 'true'" class="orderItemDialog">
+		<div data-dojo-type="dojox.mobile.RoundRect" class="marginless">
+			<div class="dialogImageField">
+				<img src="img/icon.png" class="dialogImage"/>
+			</div>
+			<div class="messageDialogText" id="needYourZipCodeText">Enter your zip code</div>
+			<div style="margin-bottom: 10px;" class="fullWidth smallItalicText">It's all what you need to check out nearby restaurants!</div>
+			<div class="registrationFieldContainer">
+				<div class="fullWidth">
+					<input id="anonymousUserZipCodeField" type="number" min="1"
+						max="99999" class="fullWidth blackColor" name="anonymousUserZipCodeField"
+						data-dojo-type="dojox.mobile.TextBox"
+						placeHolder="e.g. 95122" class="fullWidth blackColor" />
+				</div>
+			</div>
+			<div class="centerBtnContainer">
+				<button data-dojo-type="dojox.mobile.Button" id="anonymousUserZipCodeDialogOkBtn"
+					class="baseBtn greenBtn findNearbyRestaurantBtn">Find nearby restaurants</button>
+			</div>
+		</div>
+	</div>
+	<!-- The "track order" page -->
+	<div id="trackOrderView" data-dojo-type="g2g/TrackOrderView" data-dojo-props="closeButton: 'true'" class="addOrderItemDialog" style="z-index: 120;">
+			<!-- subheading -->
+			<!-- <div class="trackorderlabel">
+				<div id="ordertrackingimagecontainer"><img class="dialogImage" src="img/icon.png" /></div>
+			</div> -->
+			<!-- a rounded rectangle list container -->
+			<!-- <h2 data-dojo-type="dojox.mobile.RoundRectCategory" id="trackOrderContainer"> -->
+			<div data-dojo-type="dojox.mobile.RoundRectList" class="trackordercontainer">
+				<div data-dojo-type="dojox/mobile/ScrollablePane" id="trackOrderScrollablePane" class="orderstatusscrollablepane">
+					<div class="container">
+						<div class="row">
+			            	<div class="etacol">
+								<div style="float: left; width: 100%;">
+									<div class="pendingOrderRestaurantImgDiv"><img id="trackedOrderRestaurantImage" class="restaurantImg" src=""/></div>
+									<div class="ellipsisText pendingOrderRestaurantName" id="trackedOrderRestaurantName" style="padding-bottom: 5px; padding-top: 10px;"></div>
+								</div>
+								<div id="estimatedTimeOfArrivalDiv" style="text-align: left; margin-left:10px; margin-bottom: 0px;" class="centerYellowItalicDescription"></div>
+								<div id="estimatedTimeOfArrivalMsgDiv" style="text-align: left; margin-left:10px;" class="centerRedItalicWarning"></div>
+								<div id="orderDriverDiv" style="text-align: left; margin-left:10px;" class="centerYellowItalicDescription"></div>
+			            	</div>
+			            </div>
+			            <hr>
+			            <div class="row">
+			                <div class="col-lg-12" id="refundedOrder">
+			                	<ul class="timeline">
+			                		<li>
+			                            <div class="timeline-image">
+			                                <img class="img-circle img-responsive" src="img/black-check.png" alt="">
+			                            </div>
+			                            <div class="timeline-panel">
+			                                <div class="timeline-heading">
+			                                    <h4>Placed</h4>
+			                                    <h4 class="subheading">By You</h4>
+			                                </div>
+			                            </div>
+			                        </li>
+			                        <li>
+			                            <div class="timeline-image">
+			                                <img class="img-circle img-responsive" src="img/black-check.png" alt="">
+			                            </div>
+			                            <div class="timeline-panel">
+			                                <div class="timeline-heading">
+			                                    <h4>Received</h4>
+			                                    <h4 class="subheading">By G2G Admins</h4>
+			                                </div>
+			                            </div>
+			                        </li>
+									<li>
+			                            <div class="timeline-image-selected">
+			                                <img class="img-circle img-responsive" src="img/icon.png" alt="">
+			                            </div>
+			                            <div class="timeline-panel-selected">
+			                                <div class="timeline-heading-selected">
+			                                    <h4>Refunded</h4>
+			                                    <h4 class="subheading">To you</h4>
+			                                </div>
+			                            </div>
+			                        </li>
+			                	</ul>
+		                	</div>
+		                	<div class="col-lg-12" id="onTrackOrder">
+			                    <ul class="timeline">
+			                        <li>
+			                            <div class="timeline-image" id="placedTimelineImage">
+			                                <img id="placedImage" class="img-circle img-responsive" src="img/black-check.png" alt="">
+			                                <img id="placedImageSelected" class="img-circle img-responsive" src="img/icon.png" alt="">
+			                            </div>
+			                            <div class="timeline-panel" id="placedTimelinePanel">
+			                                <div class="timeline-heading" id="placedTimelineHeading">
+			                                    <h4>Placed</h4>
+			                                    <h4 class="subheading">By You</h4>
+			                                </div>
+			                            </div>
+			                        </li>
+			                        <li>
+			                            <div class="timeline-image" id="receivedTimelineImage">
+			                                <img id="receivedImage" class="img-circle img-responsive" src="img/black-check.png" alt="">
+			                                <img id="receivedImageSelected" class="img-circle img-responsive" src="img/icon.png" alt="">
+			                            </div>
+			                            <div class="timeline-panel" id="receivedTimelinePanel">
+			                                <div class="timeline-heading" id="receivedTimelineHeading">
+			                                    <h4>Received</h4>
+			                                    <h4 class="subheading">By G2G Agents</h4>
+			                                </div>
+			                            </div>
+			                        </li>
+									<li>
+			                            <div class="timeline-image-selected" id="beingPreparedTimelineImage">
+			                            	<img id="beingPreparedImage" class="img-circle img-responsive" src="img/black-check.png" alt="">
+			                                <img id="beingPreparedImageSelected" class="img-circle img-responsive" src="img/icon.png" alt="">
+			                            </div>
+			                            <div class="timeline-panel-selected" id="beingPreparedTimelinePanel">
+			                                <div class="timeline-heading-selected" id="beingPreparedTimelineHeading">
+			                                    <h4>Being Prepared</h4>
+			                                    <h4 class="subheading" id ="restaurantField">By The Restaurant</h4>
+			                                </div>
+			                            </div>
+			                        </li>
+									<li>
+			                            <div class="timeline-image" id="pickedUpTimelineImage">
+			                                <img id="pickedUpImage" class="img-circle img-responsive" src="img/black-check.png" alt="">
+			                                <img id="pickedUpImageSelected" class="img-circle img-responsive" src="img/icon.png" alt="">
+			                            </div>
+			                            <div class="timeline-panel" id="pickedUpTimelinePanel">
+			                                <div class="timeline-heading" id="pickedUpTimelineHeading">
+			                                    <h4>Picked Up</h4>
+			                                    <h4 class="subheading" id="driverField">By Our Driver</h4>
+			                                </div>
+			                            </div>
+			                        </li>
+									<li>
+			                            <div class="timeline-image" id="deliveredTimelineImage">
+			                                <img id="deliveredImage" class="img-circle img-responsive" src="img/black-check.png" alt="">
+			                                <img id="deliveredImageSelected" class="img-circle img-responsive" src="img/icon.png" alt="">
+			                            </div>
+			                            <div class="timeline-panel" id="deliveredTimelinePanel">
+			                                <div class="timeline-heading" id="deliveredTimelineHeading">
+			                                    <h4>Delivered</h4>
+			                                    <h4 class="subheading">To You</h4>
+			                                </div>
+			                            </div>
+			                        </li>
+			                    </ul>
+			                </div>
+			            </div>
+			            <hr>
+			            <div id="rating" class="row">
+			            	<span class="centerYellowItalicDescription">Help us improve by rating this delivery</span>
+			            	<span id="orderRating" data-dojo-type="g2g/G2GRating" data-dojo-props='image: "img/star-6.png", numStars:5, value:1'></span>
+			            </div>
+			            <hr>
+			            <div id="items" class="row">
+			            	<div class="centerYellowTitle">Order Items</div>
+			            	<ul data-dojo-type="dojox.mobile.RoundRectList"	id="trackOrderItemsRoundRectList" class="trackOrderItemsList"></ul>
+			            </div>
+		            </div>
+		        </div>
+	        </div>
+	        <!-- </h2> -->
+			<!-- <div class="centerBtnContainer">
+				<button data-dojo-type="dojox.mobile.Button" id="trackOrderDismissBtn"
+					class="loginBtn baseBtn greenBtn addToOrderBtn">Dismiss</button>
+			</div> -->
+		</div>
+	<div data-dojo-type="g2g/FirstTimePaymentsView"
+		id="firstTimePaymentsView" class="FirstTimePaymentsDialog" data-dojo-props="closeButton: 'true'">
+		<h2 id="chooseAddressViewTitle" class="dialogBoxTitle">Add a payment method</h2>
+		<div data-dojo-type="dojox.mobile.RoundRect">
+			<div class="registrationFieldContainer">
+				<div class="fullWidth">Card number</div>
+				<div class="fullWidth">
+					<input id="newCardNumber" type="number" min="1"
+						max="9999999999999999" class="fullWidth blackColor" name="newCardNumber"
+						data-dojo-type="dojox.mobile.TextBox"
+						placeHolder="e.g. 4342 5622 0505 1986" />
+				</div>
+			</div>
+			<div class="registrationFieldContainer">
+				<div class="leftFloatedField fullWidth">Expiration date
+					(MM/YY)</div>
+				</div>
+		<div class="registrationFieldContainer">
+				<div class="fullWidth">
+					<div class="leftFloatedField fortyFivePercentWidth">
+						<input id="newCardExpirationMonth" class="fullWidth blackColor"
+							type="number" min="1" max="12" name="newCardExpirationMonth"
+							data-dojo-type="dojox.mobile.TextBox" placeHolder="e.g 10" />
+					</div>
+					<div
+						class="centerText textboxHeight leftFloatedField tenPercentWidth">/</div>
+					<div class="leftFloatedField fortyFivePercentWidth">
+						<input id="newCardExpirationYear" class="fullWidth blackColor"
+							type="number" min="15" max="99" name="newCardExpirationYear"
+							data-dojo-type="dojox.mobile.TextBox" placeHolder="e.g 17" />
+					</div>
+				</div>
+			</div>
+			<div class="registrationFieldContainer">
+				<div class="leftFloatedField">CCV</div>
+				<div class="fullWidth">
+					<input id="newCardCCV" type="number" name="newCardCCV" min="0"
+						max="999" data-dojo-type="dojox.mobile.TextBox"
+						placeHolder="e.g. 123" class="fullWidth blackColor" />
+				</div>
+			</div>
+			<div class="registrationFieldContainer">
+				<div class="leftFloatedField">Card nickname</div>
+				<div class="fullWidth">
+					<input id="newCardNickname" name="newCardNickname"
+						data-dojo-type="dojox.mobile.TextBox"
+						placeHolder="e.g. My Main Card" class="fullWidth blackColor" />
+				</div>
+			</div>
+			<div class="fullWidth smallItalicText">You pay online
+				through our ordering system. We only accept credit or debit
+				cards. This is done to ensure your delivery experience goes
+				smoothly. We take your personal information very seriously. Your
+				data is securely encrypted, saved only to your device, and is never shared.</div>
+			<div class="registrationNextBtnContainer">
+				<button data-dojo-type="dojox.mobile.Button"
+					id="registrationPaymentsNextBtn"
+					class="registrationNextBtnBlack"></button>
+				<div class="rightFloatedField nextButton">Save & Checkout</div>
+			</div>
+		</div>
+	</div>
+	<div data-dojo-type="g2g/OnTheFlyRegistrationAccount"
+		id="onTheFlyRegistrationAccount" class="FirstTimePaymentsDialog" data-dojo-props="closeButton: 'true'">
+		<h2 id="chooseAddressViewTitle" class="dialogBoxTitle">Sign up with G2G</h2>
+		<ul data-dojo-type="dojox/mobile/TabBar" fixed="top"
+			class="registrationTabBar">
+			<li data-dojo-type="dojox/mobile/TabBarButton"
+				id="onTheFlyAccountRegistrationAccountTabBarButton"
+				class="registrationTabButton mostLeftRadiusTabBarButton"
+				data-dojo-props='icon1:"img/circle_yellow_10x10.png", icon2:"img/circle_black_10x10.png", selected:true'>Account</li>
+			<li data-dojo-type="dojox/mobile/TabBarButton"
+				id="onTheFlyAccountRegistrationAddressTabBarButton"
+				class="registrationTabButton middleRadiusTabBarButton"
+				data-dojo-props='icon1:"img/circle_yellow_10x10.png", icon2:"img/circle_black_10x10.png"'>Address</li>
+			<li data-dojo-type="dojox/mobile/TabBarButton"
+				id="onTheFlyAccountRegistrationPaymentTabBarButton"
+				class="registrationTabButton middleRadiusTabBarButton"
+				data-dojo-props='icon1:"img/circle_yellow_10x10.png", icon2:"img/circle_black_10x10.png"'>Payment</li>
+		</ul>
+		<div data-dojo-type="dojox.mobile.RoundRect">
+			<div class="registrationFieldContainer">
+				<div class="leftFloatedField">Email Address</div>
+					<div class="fullWidth">
+						<input id="onTheFlyRegistrationNewUsername" name="newUsername"
+							data-dojo-type="dojox.mobile.TextBox"
+							placeHolder="e.g. Johnsmith@email.com" class="fullWidth blackColor" />
+					</div>
+				</div>
+				<div class="registrationFieldContainer">
+					<div class="leftFloatedField">Password</div>
+					<div class="fullWidth">
+						<input id="onTheFlyRegistrationNewPassword" name="newPassword" type="password"
+							data-dojo-type="dojox.mobile.TextBox" placeHolder="Password"
+							class="fullWidth blackColor" />
+					</div>
+				</div>
+				<div class="registrationFieldContainer">
+					<div class="leftFloatedField">Confirm password</div>
+					<div class="fullWidth">
+						<input id="onTheFlyRegistrationConfirmNewPassword" name="confirmNewPassword"
+							type="password" data-dojo-type="dojox.mobile.TextBox"
+							placeHolder="Retype password" class="fullWidth blackColor" />
+					</div>
+				</div>
+				<div class="registrationFieldContainer">
+					<div class="leftFloatedField">First Name</div>
+					<div class="fullWidth">
+						<input id="onTheFlyRegistrationNewFirstName" name="newFirstName"
+							data-dojo-type="dojox.mobile.TextBox" placeHolder="e.g. John"
+							class="fullWidth blackColor" />
+					</div>
+				</div>
+				<div class="registrationFieldContainer">
+					<div class="leftFloatedField">Last Name</div>
+					<div class="fullWidth">
+						<input id="onTheFlyRegistrationNewLastName" class="fullWidth blackColor" name="newLastName"
+							data-dojo-type="dojox.mobile.TextBox" placeHolder="e.g. Smith" />
+					</div>
+				</div>
+				<div class="registrationFieldContainer">
+					<div class="leftFloatedField">Phone#</div>
+					<div class="fullWidth">
+						<input id="onTheFlyRegistrationNewPhoneNumber" class="fullWidth blackColor"
+							name="newPhoneNumber" data-dojo-type="dojox.mobile.TextBox"
+							placeHolder="e.g. (408) 123-5678" />
+					</div>
+				</div>
+			<div class="registrationNextBtnContainer">
+				<button data-dojo-type="dojox.mobile.Button"
+					id="onTheFlyRegistrationAccountNextBtn"
+					class="registrationNextBtnBlack"></button>
+				<div class="rightFloatedField nextButton">Next</div>
+			</div>
+		</div>
+	</div>
+	<div data-dojo-type="g2g/OnTheFlyRegistrationAddress"
+		id="onTheFlyRegistrationAddress" class="FirstTimePaymentsDialog" data-dojo-props="closeButton: 'true'">
+		<h2 id="chooseAddressViewTitle" class="dialogBoxTitle">Sign up with G2G</h2>
+		<ul data-dojo-type="dojox/mobile/TabBar" fixed="top"
+			class="registrationTabBar">
+			<li data-dojo-type="dojox/mobile/TabBarButton"
+				id="onTheFlyAddressRegistrationAccountTabBarButton"
+				class="registrationTabButton mostLeftRadiusTabBarButton"
+				data-dojo-props='icon1:"img/circle_yellow_10x10.png", icon2:"img/circle_black_10x10.png"'>Account</li>
+			<li data-dojo-type="dojox/mobile/TabBarButton"
+				id="onTheFlyAddressRegistrationAddressTabBarButton"
+				class="registrationTabButton middleRadiusTabBarButton"
+				data-dojo-props='icon1:"img/circle_yellow_10x10.png", icon2:"img/circle_black_10x10.png", selected:true'>Address</li>
+			<li data-dojo-type="dojox/mobile/TabBarButton"
+				id="onTheFlyAddressRegistrationPaymentTabBarButton"
+				class="registrationTabButton middleRadiusTabBarButton"
+				data-dojo-props='icon1:"img/circle_yellow_10x10.png", icon2:"img/circle_black_10x10.png"'>Payment</li>
+		</ul>
+		<div data-dojo-type="dojox.mobile.RoundRect">
+			<div class="registrationFieldContainer">
+				<div class="leftFloatedField">Nickname</div>
+					<div class="fullWidth">
+						<input id="onTheFlyRegistrationAddressNickname"
+							name="registrationAddressNickname"
+							data-dojo-type="dojox.mobile.TextBox" placeHolder="e.g. Home"
+							class="fullWidth blackColor" />
+					</div>
+				</div>
+				<div class="registrationFieldContainer">
+					<div>Street address</div>
+					<input id="onTheFlyRegistrationNewStreetAddress" class="fullWidth blackColor"
+						name="newStreetAddress" data-dojo-type="dojox.mobile.TextBox"
+						placeHolder="e.g. 1907 Streetname Ave" />
+					<input id="onTheFlyRegistrationNewStreetAddress2" class="fullWidth blackColor"
+						name="newStreetAddress2" data-dojo-type="dojox.mobile.TextBox"
+						placeHolder="e.g. Apt# 5" />
+				</div>
+				<div class="registrationFieldContainer">
+					<div class="leftFloatedField">City</div>
+					<div>
+						<div class="fullWidth">
+							<input id="onTheFlyRegistrationNewCity" name="newCity"
+								data-dojo-type="dojox.mobile.TextBox"
+								placeHolder="e.g. San Jose" class="fullWidth blackColor" />
+						</div>
+					</div>
+				</div>
+				<div class="registrationFieldContainer">
+					<div class="leftFloatedField">State</div>
+					<div>
+						<div class="fullWidth">
+							<input id="onTheFlyRegistrationNewState" name="newState"
+								data-dojo-type="dojox.mobile.TextBox"
+								placeHolder="e.g. California" class="fullWidth blackColor"
+								value="California" />
+						</div>
+					</div>
+				</div>
+				<div class="registrationFieldContainer">
+					<div class="leftFloatedField">Zip code</div>
+					<div>
+						<div class="fullWidth">
+							<input id="onTheFlyRegistrationNewZipCode" name="newZipCode"
+								data-dojo-type="dojox.mobile.TextBox" disabled placeHolder="e.g. 95122"
+								class="fullWidth blackColor" />
+						</div>
+					</div>
+				</div>
+				<div class="registrationFieldContainer">
+					Address details
+					<textarea id="onTheFlyRegistrationNewAddressDetails" class="fullWidth blackColor"
+						name="newAddressDetails" data-dojo-type="dojox.mobile.TextArea"
+						placeHolder="e.g. Building #12, upstairs, around the corner ... or any possible details for a fast delivery!">
+				</textarea>
+				</div>
+			<div class="registrationNextBtnContainer">
+				<button data-dojo-type="dojox.mobile.Button"
+					id="onTheFlyRegistrationAddressNextBtn"
+					class="registrationNextBtnBlack"></button>
+				<div class="rightFloatedField nextButton">Next</div>
+			</div>
+		</div>
+	</div>
+	<div data-dojo-type="g2g/OnTheFlyRegistrationPayment"
+		id="onTheFlyRegistrationPayment" class="FirstTimePaymentsDialog" data-dojo-props="closeButton: 'true'">
+		<h2 id="chooseAddressViewTitle" class="dialogBoxTitle">Sign up with G2G</h2>
+		<ul data-dojo-type="dojox/mobile/TabBar" fixed="top"
+			class="registrationTabBar">
+			<li data-dojo-type="dojox/mobile/TabBarButton"
+				id="onTheFlyPaymentRegistrationAccountTabBarButton"
+				class="registrationTabButton mostLeftRadiusTabBarButton"
+				data-dojo-props='icon1:"img/circle_yellow_10x10.png", icon2:"img/circle_black_10x10.png"'>Account</li>
+			<li data-dojo-type="dojox/mobile/TabBarButton"
+				id="onTheFlyPaymentRegistrationAddressTabBarButton"
+				class="registrationTabButton middleRadiusTabBarButton"
+				data-dojo-props='icon1:"img/circle_yellow_10x10.png", icon2:"img/circle_black_10x10.png"'>Address</li>
+			<li data-dojo-type="dojox/mobile/TabBarButton"
+				id="onTheFlyPaymentRegistrationPaymentTabBarButton"
+				class="registrationTabButton middleRadiusTabBarButton"
+				data-dojo-props='icon1:"img/circle_yellow_10x10.png", icon2:"img/circle_black_10x10.png", selected:true'>Payment</li>
+		</ul>
+		<div data-dojo-type="dojox.mobile.RoundRect">
+			<div class="registrationFieldContainer">
+				<div class="fullWidth">Card number</div>
+				<div class="fullWidth">
+					<input id="onTheFlyRegistrationNewCardNumber" type="number" min="1"
+						max="9999999999999999" class="fullWidth" name="newCardNumber"
+						data-dojo-type="dojox.mobile.TextBox"
+						placeHolder="e.g. 4342 5622 0505 1986" class="fullWidth blackColor" />
+				</div>
+			</div>
+			<div class="registrationFieldContainer">
+				<div class="leftFloatedField fullWidth">Expiration date
+					(MM/YY)</div>
+				</div>
+		<div class="registrationFieldContainer">
+				<div class="fullWidth">
+					<div class="leftFloatedField fortyFivePercentWidth">
+						<input id="onTheFlyRegistrationNewCardExpirationMonth" class="fullWidth blackColor"
+							type="number" min="1" max="12" name="newCardExpirationMonth"
+							data-dojo-type="dojox.mobile.TextBox" placeHolder="e.g 10" />
+					</div>
+					<div
+						class="centerText textboxHeight leftFloatedField tenPercentWidth">/</div>
+					<div class="leftFloatedField fortyFivePercentWidth">
+						<input id="onTheFlyRegistrationNewCardExpirationYear" class="fullWidth blackColor"
+							type="number" min="15" max="99" name="newCardExpirationYear"
+							data-dojo-type="dojox.mobile.TextBox" placeHolder="e.g 17" />
+					</div>
+				</div>
+			</div>
+			<div class="registrationFieldContainer">
+				<div class="leftFloatedField">CCV</div>
+				<div class="fullWidth">
+					<input id="onTheFlyRegistrationNewCardCCV" type="number" name="newCardCCV" min="0"
+						max="999" data-dojo-type="dojox.mobile.TextBox"
+						placeHolder="e.g. 123" class="fullWidth blackColor" />
+				</div>
+			</div>
+			<div class="registrationFieldContainer">
+				<div class="leftFloatedField">Card nickname</div>
+				<div class="fullWidth">
+					<input id="onTheFlyRegistrationNewCardNickname" name="newCardNickname"
+						data-dojo-type="dojox.mobile.TextBox"
+						placeHolder="e.g. My Main Card" class="fullWidth blackColor" />
+				</div>
+			</div>
+			<div class="fullWidth smallItalicText">You pay online
+				through our ordering system. We only accept credit or debit
+				cards. This is done to ensure your delivery experience goes
+				smoothly. We take your personal information very seriously. Your
+				data is securely encrypted, saved only to your device, and is never shared.</div>
+			<div class="registrationNextBtnContainer">
+				<button data-dojo-type="dojox.mobile.Button" id="onTheFlyRegistrationPaymentNextBtn"
+					class="registrationNextBtnBlack">
+				</button>
+				<div class="rightFloatedField nextButton" id="onTheFlyRegistrationPaymentNextBtnTitle">Sign up</div>
+			</div>
+		</div>
+	</div>
+	<!-- The generic message box -->
+	<div id="messageDialog" data-dojo-type="g2g/MessageDialogView"
+		data-dojo-props="closeButton: 'true'" class="announcementDialog" style="z-index: 200;">
+		<div class="dialogImageField">
+			<img src="img/icon.png" class="dialogImage"/>
+		</div>
+		<div id="messageField" class="announcementDialogText"></div>
+	</div>
+	<div id="offlineDialog" data-dojo-type="g2g/OfflineDialogView" data-dojo-props="closeButton: 'true'" class="orderItemDialog">
+		<div id="offlineDialogRect" data-dojo-type="dojox.mobile.RoundRectList" class="marginless">
+			<div class="dialogImageField">
+				<img src="img/icon.png" class="dialogImage"/>
+			</div>
+			<div  class="weareofflinedialog">
+				<p class="weareoffline">We are offline ! </p>
+				<p class="weareofflinemessage" id="offlineMessageParagraph"></p>
+			</div>
+		</div>
+	</div>
+
+	<!-- The driver login view -->
+
+	<div id="driverLogin" data-dojo-type="g2g/DriverLoginView">
+	<!-- <span data-dojo-type="dojox/mobile/ToolBarButton" fixed="top" data-dojo-props='moveTo: "driverSplash", icon:"img/back-icon.png" , transition: "fade"' style="float:initial;"></span> -->
+		<div style="height: 200px;"></div>
+		<div data-dojo-type="dojox.mobile.RoundRect">
+			<form id="driverLoginForm">
+				<div data-dojo-type="dojox.mobile.FormLayout">
+					<div>
+						<!-- <label>G2G Email Address</label> -->
+						<fieldset>
+							<input id="driverUsername" name="username"
+								data-dojo-type="dojox.mobile.TextBox"
+								data-dojo-props="selected: true" class="fullWidth loginField" placeHolder="G2G Driver Username"/>
+						</fieldset>
+					</div>
+					<div>
+						<!-- <label>G2G Password</label> -->
+						<fieldset>
+							<input id="driverPassword" type="password" name="password"
+								data-dojo-type="dojox.mobile.TextBox" class="fullWidth loginField" placeHolder="G2G Driver Password"/>
+						</fieldset>
+					</div>
+				</div>
+			</form>
+			<button data-dojo-type="dojox.mobile.Button" id="driverLoginBackBtn"
+				class="loginBackBtn baseBtn whiteBtn">Back</button>
+			<button data-dojo-type="dojox.mobile.Button" id="driverLoginBtn"
+				class="loginSmallBtn baseBtn whiteBtn">Login</button>
+			<div class="forgotPasswordContainer">
+				<div id="loginAsCustomerLink" class="rightFloatedField">Login as Customer</div>
+			</div>
+		</div>
+	</div>
+	<div data-dojo-type="g2g/DriverRegistrationView" id="driverRegistration" class="registratoinView" data-dojo-props="">
+		<h1 data-dojo-type="dojox.mobile.Heading" id="driverRegistrationHeader" fixed="top" data-dojo-props='label: "Drive with G2G!"'>
+			<span data-dojo-type="dojox/mobile/ToolBarButton" id="driverRegistrationBackBtn" data-dojo-props='moveTo: "driverSplash", icon:"img/back-icon.png", transition: "slide", transitionDir: "-1"' style="float:left;"></span>
+		</h1>
+		<div data-dojo-type="dojox.mobile.RoundRect">
+			<div class="registrationFieldContainer">
+				<div class="leftFloatedField">Full Name</div>
+				<div class="fullWidth">
+					<input id="newDriverFullName" name="newFirstName"
+						data-dojo-type="dojox.mobile.TextBox" placeHolder="e.g. John Smith"
+						class="fullWidth blackColor" />
+				</div>
+			</div>
+			<div class="registrationFieldContainer">
+				<div class="leftFloatedField">Email Address</div>
+				<div class="fullWidth">
+					<input id="newDriverEmailAddress" name="newFirstName"
+						data-dojo-type="dojox.mobile.TextBox" placeHolder="e.g. JohnSmith@gmail.com"
+						class="fullWidth blackColor" />
+				</div>
+			</div>
+			<div class="registrationFieldContainer">
+				<div class="leftFloatedField">Date of birth</div>
+				<div class="fullWidth">
+					<input id="newDriverDateOfBirth" class="fullWidth blackColor" type="date"
+						name="newDateOfBirth" data-dojo-type="dojox.mobile.TextBox"
+						placeHolder="e.g. 12/31/1900" />
+				</div>
+			</div>
+			<div class="registrationFieldContainer">
+				<div class="leftFloatedField">City</div>
+				<div class="fullWidth">
+					<input id="newDriverCity" class="fullWidth blackColor"
+						name="newPhoneNumber" data-dojo-type="dojox.mobile.TextBox"
+						placeHolder="e.g. San Jose" />
+				</div>
+			</div>
+			<div class="registrationFieldContainer">
+				<div class="leftFloatedField">Phone#</div>
+				<div class="fullWidth">
+					<input id="newDriverPhoneNumber" class="fullWidth blackColor"
+						name="newPhoneNumber" data-dojo-type="dojox.mobile.TextBox"
+						placeHolder="e.g. (408) 123-5678" />
+				</div>
+			</div>
+			<div class="fullWidth smallItalicText">Self-registration is not yet available through G2G application. Registrations are done by G2G after screening the drivers requests.</div>
+			<div class="registrationNextBtnContainer">
+				<button data-dojo-type="dojox.mobile.Button"
+					id="newDriverSubmitBtn"
+					class="registrationNextBtnBlack"></button>
+				<div class="rightFloatedField nextButton">Send Request</div>
+			</div>
+		</div>
+	</div>
+	<!-- The "login" page -->
+	<div id="login" data-dojo-type="g2g/LoginView">
+		<!-- <span data-dojo-type="dojox/mobile/ToolBarButton" fixed="top" data-dojo-props='moveTo: "customerSplash", icon:"img/back-icon.png", transition:"fade"' style="float:initial;"></span> -->
+			<div style="height: 200px;"></div>
+			<div data-dojo-type="dojox.mobile.RoundRect">
+				<form id="loginForm">
+					<div data-dojo-type="dojox.mobile.FormLayout">
+						<div>
+							<!-- <label>G2G Email Address</label> -->
+							<fieldset>
+								<input id="username" name="username"
+									data-dojo-type="dojox.mobile.TextBox"
+									data-dojo-props="selected: true" class="fullWidth loginField" placeHolder="G2G Email Address"/>
+							</fieldset>
+						</div>
+						<div>
+							<!-- <label>G2G Password</label> -->
+							<fieldset>
+								<input id="password" type="password" name="password"
+									data-dojo-type="dojox.mobile.TextBox" class="fullWidth loginField" placeHolder="G2G Password"/>
+							</fieldset>
+						</div>
+					</div>
+				</form>
+				<button data-dojo-type="dojox.mobile.Button" id="customerLoginBackBtn"
+					class="loginBackBtn baseBtn whiteBtn">Back</button>
+				<button data-dojo-type="dojox.mobile.Button" id="loginBtn"
+					class="loginBtn baseBtn whiteBtn">Login</button>
+				<div class="forgotPasswordContainer">
+					<div id="forgotPasswordLink" class="leftFloatedField">I
+						Forgot My Password</div>
+					<div id="loginAsDriverLink" class="rightFloatedField">Login as Driver</div>
+				</div>
+			</div>
+	</div>
+	<!-- The "login" popup -->
+	<div id="onTheFlyLoginView" data-dojo-type="g2g/OnTheFlyLoginView" data-dojo-props="closeButton: 'true'">
+		<div data-dojo-type="dojox.mobile.RoundRect" class="marginless">
+			<div class="dialogImageField">
+				<img src="img/icon.png" class="dialogImage"/>
+			</div>
+			<form id="onTheFlyLoginForm">
+				<div data-dojo-type="dojox.mobile.FormLayout">
+					<div>
+						<!-- <label>G2G Email Address</label> -->
+						<fieldset>
+							<input id="onTheFlyLoginUsername" name="username"
+								data-dojo-type="dojox.mobile.TextBox"
+								data-dojo-props="selected: true" class="fullWidth loginField" placeholder="G2G Email Address"/>
+						</fieldset>
+					</div>
+					<div>
+						<!-- <label>G2G Password</label> -->
+						<fieldset>
+							<input id="onTheFlyLoginPassword" type="password" name="password"
+								data-dojo-type="dojox.mobile.TextBox" class="fullWidth loginField" placeholder="G2G Password" />
+						</fieldset>
+					</div>
+				</div>
+				<div class="forgotPasswordContainer">
+					<div id="onTheFlyLoginForgotPasswordLink" class="leftFloatedField">I
+						Forgot My Password</div>
+					<div id="onTheFlyLoginSignUpLink" class="rightFloatedField">Sign up</div>
+				</div>
+			</form>
+			<button data-dojo-type="dojox.mobile.Button" id="onTheFlyLoginLoginBtn"
+				class="loginBtn baseBtn whiteBtn">Login</button>
+		</div>
+	</div>
+	<!-- The registration page -->
+	<div id="registrationTabContainer"
+		data-dojo-type="g2g/RegistrationTabContainerView"
+		class="registrationTabContainer">
+		<form id="registrationForm" method="POST">
+			<h1 data-dojo-type="dojox.mobile.Heading"
+				id="registrationTabContainerHeader"
+				data-dojo-props="label: 'Welcome to G2G!'" fixed="top"
+				class="backBtnImg">
+				<span data-dojo-type="dojox/mobile/ToolBarButton"
+					id="registrationHeaderBackBtn"
+					data-dojo-props="moveTo: 'customerSplash', transition: 'slide', transitionDir: '-1'"></span>
+			</h1>
+			<ul data-dojo-type="dojox/mobile/TabBar" fixed="top"
+				class="registrationTabBar">
+				<li data-dojo-type="dojox/mobile/TabBarButton"
+					id="registrationAccountTabBarButton"
+					class="registrationTabButton mostLeftRadiusTabBarButton"
+					data-dojo-props='moveTo: "registrationAccountView", icon1:"img/circle_yellow_10x10.png", icon2:"img/circle_black_10x10.png", selected:true'>Account</li>
+				<li data-dojo-type="dojox/mobile/TabBarButton"
+					id="registrationPersonalTabBarButton"
+					class="registrationTabButton middleRadiusTabBarButton"
+					data-dojo-props='moveTo: "registrationPersonalView", icon1:"img/circle_yellow_10x10.png", icon2:"img/circle_black_10x10.png"'>Personal</li>
+				<li data-dojo-type="dojox/mobile/TabBarButton"
+					id="registrationAddressesTabBarButton"
+					class="registrationTabButton middleRadiusTabBarButton"
+					data-dojo-props='moveTo: "registrationAddressesView", icon1:"img/circle_yellow_10x10.png", icon2:"img/circle_black_10x10.png"'>Addresses</li>
+				<!-- <li data-dojo-type="dojox/mobile/TabBarButton"
+					id="registrationPaymentsTabBarButton"
+					class="registrationTabButton middleRadiusTabBarButton"
+					data-dojo-props='moveTo: "registrationPaymentsView", icon1:"img/circle_yellow_10x10.png", icon2:"img/circle_black_10x10.png"'>Payments</li> -->
+				<li data-dojo-type="dojox/mobile/TabBarButton"
+					id="registrationThatsItTabBarButton"
+					class="registrationTabButton mostRightRadiusTabBarButton"
+					data-dojo-props='moveTo: "registrationThatsItView", icon1:"img/circle_yellow_10x10.png", icon2:"img/circle_black_10x10.png"'>That's
+					it!</li>
+			</ul>
+
+			<div data-dojo-type="g2g/RegistrationAccountView"
+				id="registrationAccountView" class="registratoinView">
+				<div data-dojo-type="dojox/mobile/ScrollablePane"
+					id="registrationAccountScrollablePane">
+					<div data-dojo-type="dojox.mobile.RoundRect">
+						<div class="registrationFieldContainer">
+							<div class="leftFloatedField">Email Address</div>
+							<div class="fullWidth">
+								<input id="newUsername" name="newUsername"
+									data-dojo-type="dojox.mobile.TextBox"
+									placeHolder="e.g. Johnsmith@email.com" class="fullWidth blackColor" />
+							</div>
+						</div>
+						<div class="registrationFieldContainer">
+							<div class="leftFloatedField">Password</div>
+							<div class="fullWidth">
+								<input id="newPassword" name="newPassword" type="password"
+									data-dojo-type="dojox.mobile.TextBox" placeHolder="Password"
+									class="fullWidth blackColor" />
+							</div>
+						</div>
+						<div class="registrationFieldContainer">
+							<div class="leftFloatedField">Confirm password</div>
+							<div class="fullWidth">
+								<input id="confirmNewPassword" name="confirmNewPassword"
+									type="password" data-dojo-type="dojox.mobile.TextBox"
+									placeHolder="Retype password" class="fullWidth blackColor" />
+							</div>
+						</div>
+						<div class="registrationNextBtnContainer">
+							<button data-dojo-type="dojox.mobile.Button"
+								id="registrationAccountNextBtn" class="registrationNextBtnBlack"></button>
+							<div class="rightFloatedField nextButton">Next</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div data-dojo-type="g2g/RegistrationPersonalView"
+				id="registrationPersonalView" class="registratoinView">
+				<div data-dojo-type="dojox/mobile/ScrollablePane"
+					id="registrationPersonalScrollablePane">
+					<div data-dojo-type="dojox.mobile.RoundRect">
+						<div class="registrationFieldContainer">
+							<div class="leftFloatedField">First Name</div>
+							<div class="fullWidth">
+								<input id="newFirstName" name="newFirstName"
+									data-dojo-type="dojox.mobile.TextBox" placeHolder="e.g. John"
+									class="fullWidth blackColor" />
+							</div>
+						</div>
+						<div class="registrationFieldContainer">
+							<div class="leftFloatedField">Last Name</div>
+							<div class="fullWidth">
+								<input id="newLastName" class="fullWidth blackColor" name="newLastName"
+									data-dojo-type="dojox.mobile.TextBox" placeHolder="e.g. Smith" />
+							</div>
+						</div>
+						<div class="registrationFieldContainer">
+							<div class="leftFloatedField">Date of birth</div>
+							<div class="fullWidth">
+								<input id="newDateOfBirth" class="fullWidth blackColor" type="date"
+									name="newDateOfBirth" data-dojo-type="dojox.mobile.TextBox"
+									placeHolder="e.g. 12/31/1900" />
+							</div>
+						</div>
+						<!-- <div class="registrationFieldContainer">
+						<div class="leftFloatedField">
+						Email
+						</div>
+						<div class="fullWidth">
+							<input id="newEmail" class="fullWidth" name="newEmail" data-dojo-type="dojox.mobile.TextBox" placeHolder="e.g. Johnsmith@email.com"/>
+						</div>
+					</div> -->
+						<div class="registrationFieldContainer">
+							<div class="leftFloatedField">Phone#</div>
+							<div class="fullWidth">
+								<input id="newPhoneNumber" class="fullWidth blackColor"
+									name="newPhoneNumber" data-dojo-type="dojox.mobile.TextBox"
+									placeHolder="e.g. (408) 123-5678" />
+							</div>
+						</div>
+						<div class="registrationNextBtnContainer">
+							<button data-dojo-type="dojox.mobile.Button"
+								id="registrationPersonalNextBtn"
+								class="registrationNextBtnBlack"></button>
+							<div class="rightFloatedField nextButton">Next</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div data-dojo-type="g2g/RegistrationAddressesView"
+				id="registrationAddressesView" class="registratoinView">
+				<div data-dojo-type="dojox/mobile/ScrollablePane"
+					id="registrationAddressesScrollablePane">
+					<div data-dojo-type="dojox.mobile.RoundRect">
+						<div class="registrationFieldContainer">
+							<div class="leftFloatedField">Nickname</div>
+							<div class="fullWidth">
+								<input id="registrationAddressNickname"
+									name="registrationAddressNickname"
+									data-dojo-type="dojox.mobile.TextBox" placeHolder="e.g. Home"
+									class="fullWidth blackColor" />
+							</div>
+						</div>
+						<div class="registrationFieldContainer">
+							<div>Street address</div>
+							<!-- </div>
+					<div class="registrationFieldContainer"> -->
+							<input id="newStreetAddress" class="fullWidth blackColor"
+								name="newStreetAddress" data-dojo-type="dojox.mobile.TextBox"
+								placeHolder="e.g. 1907 Streetname Ave" />
+							<!-- </div>
+					<div class="registrationFieldContainer"> -->
+							<input id="newStreetAddress2" class="fullWidth blackColor"
+								name="newStreetAddress2" data-dojo-type="dojox.mobile.TextBox"
+								placeHolder="e.g. Apt# 5" />
+						</div>
+						<div class="registrationFieldContainer">
+							<div class="leftFloatedField">City</div>
+							<div>
+								<div class="fullWidth blackColor">
+									<input id="newCity" name="newCity"
+										data-dojo-type="dojox.mobile.TextBox"
+										placeHolder="e.g. San Jose" class="fullWidth" />
+								</div>
+							</div>
+						</div>
+						<div class="registrationFieldContainer">
+							<div class="leftFloatedField">State</div>
+							<div>
+								<div class="fullWidth">
+									<input id="newState" name="newState"
+										data-dojo-type="dojox.mobile.TextBox"
+										placeHolder="e.g. California" class="fullWidth blackColor"
+										value="California" />
+								</div>
+							</div>
+						</div>
+						<div class="registrationFieldContainer">
+							<div class="leftFloatedField">Zip code</div>
+							<div>
+								<div class="fullWidth">
+									<input id="newZipCode" name="newZipCode"
+										data-dojo-type="dojox.mobile.TextBox" placeHolder="e.g. 95122"
+										class="fullWidth blackColor" />
+								</div>
+							</div>
+						</div>
+						<div class="registrationFieldContainer">
+							Address details
+							<!-- </div>
+					<div class="registrationFieldContainer"> -->
+							<textarea id="newAddressDetails" class="fullWidth blackColor"
+								name="newAddressDetails" data-dojo-type="dojox.mobile.TextArea"
+								placeHolder="e.g. Building #12, upstairs, around the corner ... or any possible details for a fast delivery!">
+						</textarea>
+						</div>
+						<div class="registrationNextBtnContainer">
+							<button data-dojo-type="dojox.mobile.Button"
+								id="registrationAddressesNextBtn"
+								class="registrationNextBtnBlack"></button>
+							<button data-dojo-type="dojox.mobile.Button"
+								id="addAnotherAddressBtn" class="addAnotherAddressBtnBlack">Add
+								another</button>
+							<img src="img/next-icon_32x32.png"
+								class="addAnotherAddressBtnImg" />
+							<div class="rightFloatedField nextButton">Next</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div data-dojo-type="g2g/RegistrationThatsItView"
+				id="registrationThatsItView" class="registratoinView">
+				<div data-dojo-type="dojox/mobile/ScrollablePane"
+					id="registrationThatsItScrollablePane">
+					<div data-dojo-type="dojox.mobile.RoundRect">
+						<div class="thatsItImgContainer">
+							<img class="thatsItImg" src="img/check.png" />
+							<div class="thatsItText">You Are Set!</div>
+							<div class="fullWidth smallItalicText">You will be receiving an activation email from us. Follow the instructions in the email to activate your account.<br>Please make sure to check your spam folder as well.</div>
+						</div>
+						<div class="registrationNextBtnContainer">
+							<button data-dojo-type="dojox.mobile.Button"
+								id="registrationThatsItNextBtn" class="registrationNextBtnBlack"></button>
+							<div class="rightFloatedField nextButton">Login to G2G</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div id="driverTabContainer" data-dojo-type="g2g/DriverTabContainerView"
+		data-dojo-props="disableTouchScroll:true" class="tabContainer">
+		<!-- <h1 data-dojo-type="dojox.mobile.Heading" id="tabContainerHeader"
+			fixed="top">
+			<span data-dojo-type="dojox/mobile/ToolBarButton"
+				id="tabContainerHeaderBackBtn"></span>
+		</h1> -->
+		<!-- The "home" page -->
+		<div id="driverHome" data-dojo-type="g2g/DriverHomeView" data-dojo-props="selected:true">
+		<h1 data-dojo-type="dojox.mobile.Heading" id="driverHomeHeader" fixed="top" data-dojo-props='label: "Home"'>
+			<span data-dojo-type="dojox/mobile/ToolBarButton" id="refreshHomeBtn" data-dojo-props='icon:"img/refresh.png"' style="float:right;" onclick="Utilities.refreshDriverHome();"></span>
+			<span data-dojo-type="dojox/mobile/ToolBarButton" id="signoutDriverBtn" data-dojo-props='icon:"img/sign-out.png"' class="signoutToolBarButton" style="float:left;" onclick="Utilities.signoutDriver();"></span>
+		</h1>
+			<!-- a rounded rectangle list container -->
+			  <div data-dojo-type="dojox/mobile/GridLayout" data-dojo-props='cols:1' style="height: 100%;">
+			    <div data-dojo-type="dojox/mobile/Pane">
+			      <div id="emptyField"style="height: 100px;"></div>
+			    </div>
+			    <div data-dojo-type="dojox/mobile/Pane" style="text-align: center; margin-bottom: 20px;">
+				    <div class="dialogImageField">
+						<img src="img/icon.png" class="dialogImage" id="driverHomeIcon" />
+					</div>
+				</div>
+			    <div data-dojo-type="dojox/mobile/Pane" style="margin-bottom: 20px;">
+			      <div id="driverWelcomeField"></div>
+			    </div>
+			    <div data-dojo-type="dojox/mobile/Pane" style="text-align: center; margin-bottom: 20px;">
+					<button data-dojo-type="dojox.mobile.Button" id="clockInClockOutBtn" class="loginBtn baseBtn whiteBtn">
+					Clock-in
+					</button>
+			    </div>
+			    <div data-dojo-type="dojox/mobile/Pane">
+			    	<div id="driverStatusField"></div>
+			    	<div id="driverDurationField"></div>
+			    </div>
+			</div>
+		</div>
+		<div id="orderView" data-dojo-type="g2g/DriverOrder">
+		<h1 data-dojo-type="dojox.mobile.Heading" id="orderViewHeader" fixed="top" data-dojo-props='label: ""'>
+			<span data-dojo-type="dojox/mobile/ToolBarButton" id="backOrderBtn" data-dojo-props='moveTo: "driverActiveOrders", icon: "img/back-icon.png"'></span>
+			<span data-dojo-type="dojox/mobile/ToolBarButton" id="refreshOrderBtn" data-dojo-props='icon:"img/refresh.png"' style="float:right;" onclick="Utilities.refreshCurrentOrder();"></span>
+		</h1>
+			<ul data-dojo-type="dojox/mobile/TabBar" data-dojo-props='barType:"segmentedControl"'>
+			  <li data-dojo-type="dojox/mobile/TabBarButton"
+			      data-dojo-props='moveTo:"orderTabView", selected:true'>Order</li>
+			  <li data-dojo-type="dojox/mobile/TabBarButton"
+			      data-dojo-props='moveTo:"detailsTabView"'>Details</li>
+			  <!-- <li data-dojo-type="dojox/mobile/TabBarButton"
+			      data-dojo-props='moveTo:"mapTabView"'>Map</li> -->
+			</ul>
+			 <div data-dojo-type="dojox/mobile/View" id="orderTabView">
+		    	<div data-dojo-type="dojox/mobile/RoundRect" data-dojo-props='shadow:true'>
+					<div id="orderRestaurantLogoDiv"><img class="driverOrdersRestaurantImg" id="orderRestaurantLogoImg"/></div>
+					<div id="orderRestaurantNameField"></div>
+					<div id="orderRestaurantAddressField"></div>
+				</div>
+				<div data-dojo-type="dojox/mobile/RoundRect" id="statusButtonsRoundRect" data-dojo-props='shadow:true' style="text-align: center;">
+					
+				</div>
+				<div data-dojo-type="dojox/mobile/ScrollablePane" id="orderItemsScrollablePane">
+			    	<ul data-dojo-type="dojox/mobile/RoundRectList" data-dojo-props='shadow:true' id="itemsRoundRectList">
+					</ul>
+				</div>
+		    </div>
+			<div data-dojo-type="dojox/mobile/View" id="detailsTabView">
+				<div data-dojo-type="dojox/mobile/RoundRect" data-dojo-props='shadow:true'>
+					<div data-dojo-type="dojox/mobile/RoundRectCategory" data-dojo-props='label: "Order"' class="g2gRoundRectCategory"></div>
+					<div id="orderIdField"></div>
+					<div id="orderStatusField"></div>
+					<div id="customerCityField1"></div>
+					<div id="orderETAField"></div>
+				</div>
+				<div data-dojo-type="dojox/mobile/RoundRect" data-dojo-props='shadow:true'>
+					<div data-dojo-type="dojox/mobile/RoundRectCategory" data-dojo-props='label: "Customer"' class="g2gRoundRectCategory"></div>
+					<div id="customerInfoHiddenField" style="text-align: center; color: #7F0000; font-size: 11px;"></div>
+					<div id="customerNameField"></div>
+					<div id="customerPhoneField"></div>
+					<div id="customerAddress1Field"></div>
+					<div id="customerOrderAddressSpecialInstructionsField"></div>
+					<div id="customerProfileAddressSpecialInstructionsField"></div>
+				</div>
+			</div>
+			<!-- <div data-dojo-type="g2g/GoogleMapView" id="mapTabView">
+				<div id="googleMap" style="width: 100% !important; height: 100% !important">
+				</div>
+			</div> -->
+		</div>
+		<div id="driverActiveOrders" data-dojo-type="g2g/DriverActiveOrdersView">
+			<h1 data-dojo-type="dojox.mobile.Heading" id="activeOrdersHeader" fixed="top" data-dojo-props='label: "Active Orders" '>
+				<span data-dojo-type="dojox/mobile/ToolBarButton" id="refreshActiveOrdersBtn" data-dojo-props='icon:"img/refresh.png"' style="float:right;" onclick="Utilities.refreshActiveOrders();"></span>
+			</h1>
+			<div data-dojo-type="dojox/mobile/ScrollablePane"
+				id="driverActiveOrdersScrollablePane">
+				<ul data-dojo-type="dojox.mobile.RoundRectList"
+					id="driverActiveOrdersRoundRectList"></ul>
+			</div>
+		</div>
+		<!-- the tab bar -->
+		<ul data-dojo-type="dojox/mobile/TabBar" fixed="bottom" id="driverMainTabBar">
+			<li data-dojo-type="dojox/mobile/TabBarButton"
+				id="driverHomeTabBarBtn"
+				data-dojo-props='icon1:"img/home.png", icon2:"img/home.png", moveTo:"driverHome", selected:true'>Home</li>
+			<li data-dojo-type="dojox/mobile/TabBarButton" id="driverOrdersTabBarBtn"
+				data-dojo-props='icon1:"img/cart_29x29.png", icon2:"img/cart_29x29_selected.png", moveTo:"driverActiveOrders"'>My
+				Orders</li>
+		</ul>
+	</div>
+	<!-- The main tab container that contains everything after login -->
+	<div id="tabContainer" data-dojo-type="g2g/TabContainerView"
+		data-dojo-props="disableTouchScroll:true" class="tabContainer">
+		<h1 data-dojo-type="dojox.mobile.Heading" id="tabContainerHeader"
+			fixed="top">
+			<span data-dojo-type="dojox/mobile/ToolBarButton"
+				id="tabContainerHeaderBackBtn"></span> <span
+				data-dojo-type="dojox/mobile/ToolBarButton"
+				data-dojo-props='icon:"img/email-icon.png"'
+				class="contactUsToolBarButton"></span>
+		</h1>
+		<!-- The "home" page -->
+		<div id="home" data-dojo-type="g2g/HomeView"
+			data-dojo-props="selected:true">
+			<h3 data-dojo-type="dojox.mobile.Heading" class="homeTabContainer"
+				id="homeTabHeader" fixed="top"></h3>
+			<!-- a rounded rectangle list container -->
+			<div data-dojo-type="dojox/mobile/ScrollablePane"
+				id="restaurantsScrollablePane">
+				<ul data-dojo-type="dojox.mobile.RoundRectList"
+					id="restaurantsRoundRectList" class="g2gMblRoundRectList">
+				</ul>
+			</div>
+		</div>
+		<!-- The "menu categories" page -->
+		<div id="restaurantMenuCategories"
+			data-dojo-type="g2g/RestaurantMenuCategoriesView">
+			<h2 data-dojo-type="dojox.mobile.RoundRectCategory"
+				id="restaurantLabel"></h2>
+			<!-- a rounded rectangle list container -->
+			<div data-dojo-type="dojox/mobile/ScrollablePane"
+				id="restaurantMenuCategoriesScrollablePane">
+				<ul data-dojo-type="dojox.mobile.RoundRectList"
+					id="restaurantMenuCategoriesRoundRectList"></ul>
+			</div>
+		</div>
+		<!-- The "menu category items" page -->
+		<div id="restaurantMenuCategoryItems"
+			data-dojo-type="g2g/RestaurantMenuCategoryItemsView">
+			<h2 data-dojo-type="dojox.mobile.RoundRectCategory"
+				id="restaurantCategoryLabel"></h2>
+			<div id="restaurantMenuCategoryItemsScrollablePane"
+				data-dojo-type="dojox/mobile/ScrollablePane">
+				<!-- a rounded rectangle list container -->
+				<ul data-dojo-type="dojox.mobile.RoundRectList"
+					id="restaurantMenuCategoryItemsRoundRectList"
+					class="categoryItemsList"></ul>
+			</div>
+		</div>
+		<div id="orderTabContainer" data-dojo-type="g2g/OrderTabContainerView"
+			data-dojo-props="disableTouchScroll:true" class="tabContainer">
+			<ul data-dojo-type="dojox/mobile/TabBar" fixed="top"
+				class="registrationTabBar">
+				<li data-dojo-type="dojox/mobile/TabBarButton"
+					id="currentOrderTabBarBtn"
+					class="registrationTabButton mostLeftRadiusTabBarButton"
+					data-dojo-props='moveTo: "order", icon1:"img/circle_yellow_10x10.png", icon2:"img/circle_black_10x10.png", selected:true'>Current
+					Order</li>
+				<li data-dojo-type="dojox/mobile/TabBarButton"
+					id="pendingOrdersTabBarBtn"
+					class="registrationTabButton middleRadiusTabBarButton"
+					data-dojo-props='moveTo: "pendingOrders", icon1:"img/circle_yellow_10x10.png", icon2:"img/circle_black_10x10.png"'>Active orders</li>
+				<!--
+				<li data-dojo-type="dojox/mobile/TabBarButton"
+					id="myPricePlanTabBarBtn"
+					class="registrationTabButton mostRightRadiusTabBarButton"
+					data-dojo-props='moveTo: "myPricePlan", icon1:"img/circle_yellow_10x10.png", icon2:"img/circle_black_10x10.png"'>My Price Plan
+				</li>
+				-->
+			</ul>
+			<!-- The "order" page -->
+			<div id="order" data-dojo-type="g2g/OrderView">
+				<div data-dojo-type="dojox/mobile/ScrollablePane"
+					id="driverOrderItemsScrollablePane">
+					<ul data-dojo-type="dojox.mobile.RoundRectList"
+						id="orderItemsRoundRectList"></ul>
+				</div>
+			</div>
+			<!-- The "my price plan" page -->
+			<!--
+			<div id="myPricePlan" data-dojo-type="g2g/MyPricePlanView">
+				<div data-dojo-type="dojox/mobile/ScrollablePane"
+					id="myPricePlanScrollablePane">
+					<ul data-dojo-type="dojox.mobile.RoundRectList"
+						id="myPricePlanRoundRectList" class="myPricePlanRoundRectList"></ul>
+				</div>
+			</div>
+			-- >
+			<!-- The "in progress" orders -->
+			<div id="pendingOrders" data-dojo-type="g2g/PendingOrdersView">
+				<div data-dojo-type="dojox/mobile/ScrollablePane"
+					id="pendingOrdersScrollablePane">
+					<ul data-dojo-type="dojox.mobile.RoundRectList"
+						id="pendingOrdersRoundRectList" class="pendingOrdersRoundRectList"></ul>
+				</div>
+			</div>
+			<!-- The "checkout" page -->
+			<div id="checkout" data-dojo-type="g2g/CheckoutView">
+				<div data-dojo-type="dojox/mobile/ScrollablePane"
+					class="checkoutScrollablePane" id="checkoutViewScrollablePane">
+					<div data-dojo-type="dojox.mobile.RoundRect"
+						class="checkoutRoundRect" id="checkoutViewRoundRect">
+						<div class="checkoutFieldContainer">
+							<div class="checkoutFieldTitle leftFloatedField">Order
+								Value</div>
+							<div class="checkoutPriceField rightFloatedField"
+								id="initialOrderValueField"></div>
+						</div>
+						<div class="checkoutFieldContainer">
+							<div class="checkoutFieldTitle leftFloatedField">Tax</div>
+							<div class="checkoutPriceField rightFloatedField" id="taxField"></div>
+						</div>
+						<div class="checkoutFieldContainer">
+							<div class="checkoutFieldTitle leftFloatedField">Delivery
+								Charge</div>
+							<div class="checkoutPriceField rightFloatedField"
+								id="deliveryChargeField"></div>
+						</div>
+						<div class="checkoutFieldContainer underlined" id="discountsFieldContainer">
+							<div class="checkoutFieldTitle leftFloatedField">Discounts</div>
+							<div class="checkoutPriceField rightFloatedField" id="discountsField"></div>
+						</div>
+						<div class="checkoutFieldContainer underlined">
+							<div class="checkoutFieldTitle leftFloatedField">Total</div>
+							<div class="checkoutPriceField rightFloatedField"
+								id="totalWithoutTipsField"></div>
+						</div>
+						<div class="tipsContainer fullWidth leftFloatedField">
+							<div class="tipsTitle">Tips</div>
+							<div class="tipsDescription">"It all goes to your driver,
+								and they really appreciate it!"</div>
+							<div class="tipsButtonsContainer">
+								<div class="tipsButtonContainer">
+									<button data-dojo-type="dojox.mobile.Button"
+										id="tenPercentTipButton" data-dojo-props="label: '10%'"
+										class="tipsButton"></button>
+									<button data-dojo-type="dojox.mobile.Button"
+										id="tenPercentTipButtonSelected"
+										data-dojo-props="label: '10%'" class="tipsButtonSelected"
+										style="display: none;"></button>
+								</div>
+								<div class="tipsButtonContainer">
+									<button data-dojo-type="dojox.mobile.Button"
+										id="fifteenPercentTipButton" data-dojo-props="label: '15%'"
+										class="tipsButton"></button>
+									<button data-dojo-type="dojox.mobile.Button"
+										id="fifteenPercentTipButtonSelected"
+										data-dojo-props="label: '15%'" class="tipsButtonSelected"
+										style="display: none;"></button>
+								</div>
+								<div class="tipsButtonContainer">
+									<button data-dojo-type="dojox.mobile.Button"
+										id="twentyPercentTipButton" data-dojo-props="label: '20%'"
+										class="tipsButton"></button>
+									<button data-dojo-type="dojox.mobile.Button"
+										id="twentyPercentTipButtonSelected"
+										data-dojo-props="label: '20%'" class="tipsButtonSelected"
+										style="display: none;"></button>
+								</div>
+								<div class="tipsButtonContainer">
+									<input data-dojo-type="dojox.mobile.TextBox"
+										intermediateChanges="true" id="tipsPercentTextBox"
+										class="tipsButton blackColor" placeHolder="$"></input>
+								</div>
+							</div>
+						</div>
+						<div class="checkoutFieldContainer underlined">
+							<div class="checkoutFieldTitle leftFloatedField">Tip amount</div>
+							<div class="checkoutPriceField rightFloatedField"
+								id="tipsAmountField"></div>
+						</div>
+						<div class="checkoutFieldContainer underlined">
+							<div class="checkoutFieldTitle leftFloatedField">Total</div>
+							<div class="checkoutPriceField rightFloatedField"
+								id="totalWithTipsField"></div>
+						</div>
+						<div class="checkoutSpecialInstructionsTitleContainer">
+							<div
+								class="leftFloatedField fullWidth checkoutSpecialInstructionsTitle">Special
+								instructions for your driver</div>
+						</div>
+						<div class="checkoutSpecialInstructionsFieldContainer">
+							<textarea data-dojo-type="dojox.mobile.TextArea"
+								class="leftFloatedField fullWidth blackColor" id="specialInstructionsField"
+								placeHolder="Any possible details for a faster delivery!"></textarea>
+						</div>
+						<div class="checkoutFieldContainer addressListItem"
+							id="selectAddressBigBtn">
+							<div class="streetAddress" id="selectAddressBtn">Select
+								address</div>
+							<img src="img/next-icon_32x32.png"
+								class="selectAddressOrPaymentMethodBtnImg"
+								id="selectAddressBtnImg" />
+						</div>
+						<div class="checkoutFieldContainer paymentMethodListItem"
+							id="selectPaymentMethodBigBtn">
+							<div id="selectPaymentMethodBtn" class="cardNickname">Select
+								payment method ...</div>
+							<img src="img/next-icon_32x32.png"
+								class="selectAddressOrPaymentMethodBtnImg"
+								id="selectPaymentMethodBtnImg" />
+						</div>
+						<div class="checkoutBtnFieldContainer">
+							<button id="checkoutBtn" data-dojo-type="dojox.mobile.Button"
+								data-dojo-props="label: 'Place Order'"
+								class="fullWidth placeOrderBtn"></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- The "choose address" page -->
+		<div id="chooseAddressView" data-dojo-type="g2g/ChooseAddressView"
+			data-dojo-props="closeButton: 'true'" class="orderItemDialog">
+			<h2 id="chooseAddressViewTitle" class="dialogBoxTitle">Which
+				address should G2G use ?</h2>
+			<ul id="addressesRect" data-dojo-type="dojox.mobile.RoundRectList" class="marginless">
+			</ul>
+		</div>
+		<!-- The "choose payment method" page -->
+		<div id="choosePaymentMethodView"
+			data-dojo-type="g2g/ChoosePaymentMethodView"
+			data-dojo-props="closeButton: 'true'" class="orderItemDialog">
+			<h2 id="choosePaymentmethodViewTitle" class="dialogBoxTitle">Which
+				payment method should G2G use ?</h2>
+			<ul id="paymentMethodsRect"
+				data-dojo-type="dojox.mobile.RoundRectList" class="marginless">
+			</ul>
+		</div>
+
+		<!-- The "add order item" page -->
+		<div id="addOrderItem" data-dojo-type="g2g/AddOrderItemView"
+			data-dojo-props="closeButton: 'true'" class="addOrderItemDialog">
+			<!-- subheading -->
+			<div class="addOrderItemItemLabel">
+				<h2 data-dojo-type="dojox.mobile.RoundRectCategory"
+					id="addOrderItemLabel"></h2>
+			</div>
+			<!-- a rounded rectangle list container -->
+			<h2 data-dojo-type="dojox.mobile.RoundRectCategory"
+				id="orderItemToAddRestaurantMenuCategoryItem"></h2>
+			<div class="addOrderItemItemLabel">
+				<h2 data-dojo-type="dojox.mobile.RoundRectCategory"
+					id="addOrderItemItemLabel"></h2>
+			</div>
+			<div class="specialInstructionsContainer">
+				<textarea data-dojo-type="dojox.mobile.TextArea"
+					id="orderItemToAddSpecialInstructionsTextArea"
+					placeHolder="Special Instructions ..." class="specialInstructions blackColor"></textarea>
+			</div>
+			<div>
+				<span id="addOrderItemMinusBtn" class="mblDomButtonDarkBlueMinus"
+					style="float: left"></span> <span id="addOrderItemQuantity"
+					class="orderItemQuantity">1</span> <span id="addOrderItemPlusBtn"
+					class="mblDomButtonDarkBluePlus" style="float: right"></span>
+			</div>
+			<div class="centerBtnContainer">
+				<button data-dojo-type="dojox.mobile.Button" id="addToOrderBtn"
+					class="loginBtn baseBtn greenBtn addToOrderBtn">Add to
+					order</button>
+			</div>
+		</div>
+		<div id="addOrderItemSides" data-dojo-type="g2g/AddOrderItemSidesView"
+			data-dojo-props="closeButton: 'true'" class="chooseSidesDialog">
+			<!-- subheading -->
+			<div class="addOrderItemItemLabel">
+				<h2 data-dojo-type="dojox.mobile.RoundRectCategory" id="addOrderItemSideLabel"></h2>
+			</div>
+			<!-- a rounded rectangle list container -->
+			<h2 id="orderItemSideToAddRestaurantMenuCategoryItem" class="dialogBoxTitle"></h2>
+			<div data-dojo-type="dojox/mobile/ScrollablePane"
+				id="restaurantMenuCategoryItemSidesScrollablePane"
+				class="sidesScrollablePane">
+				<ul data-dojo-type="dojox.mobile.RoundRectList"
+					id="restaurantMenuCategoryItemSidesRoundRectList"></ul>
+			</div>
+			<div class="centerBtnContainer">
+				<button data-dojo-type="dojox.mobile.Button"
+					id="addToOrderAfterChoosingSidesBtn"
+					class="loginBtn baseBtn greenBtn addToOrderBtn">Add to
+					order</button>
+			</div>
+		</div>
+		<div id="activeOrders" data-dojo-type="g2g/ActiveOrdersView"
+			data-dojo-props="closeButton: 'true'" class="chooseSidesDialog">
+			<!-- subheading -->
+			<!-- a rounded rectangle list container -->
+			<h2 data-dojo-type="dojox.mobile.RoundRectCategory" id="activeOrdersTitle" class="dialogBoxTitle">Your active orders</h2>
+			<div data-dojo-type="dojox/mobile/ScrollablePane"
+				id="activeOrdersScrollablePane"
+				class="sidesScrollablePane">
+				<ul data-dojo-type="dojox.mobile.RoundRectList"
+					id="activeOrdersRoundRectList"></ul>
+			</div>
+		</div>
+		<!-- The "modify order item" page -->
+		<div id="modifyOrderItem" data-dojo-type="g2g/ModifyOrderItemView"
+			data-dojo-props="closeButton: 'true'" class="modifyOrderItemDialog">
+			<!-- subheading -->
+			<div class="addOrderItemItemLabel">
+				<h2 data-dojo-type="dojox.mobile.RoundRectCategory"
+					id="modifyOrderItemLabel"></h2>
+			</div>
+			<!-- a rounded rectangle list container -->
+			<h2 data-dojo-type="dojox.mobile.RoundRectCategory"
+				id="orderItemToModifyRestaurantMenuCategoryItem"></h2>
+			<div class="addOrderItemItemLabel">
+				<h2 data-dojo-type="dojox.mobile.RoundRectCategory"
+					id="modifyOrderItemItemLabel"></h2>
+			</div>
+			<div class="specialInstructionsContainer">
+				<textarea data-dojo-type="dojox.mobile.TextArea"
+					id="orderItemToModifySpecialInstructionsTextArea"
+					placeHolder="Special Instructions ..." class="specialInstructions blackColor"></textarea>
+			</div>
+			<div>
+				<div>
+					<span id="modifyOrderItemMinusBtn"
+						class="mblDomButtonDarkBlueMinus" style="float: left"></span> <span
+						id="modifyOrderItemQuantity" class="orderItemQuantity">1</span> <span
+						id="modifyOrderItemPlusBtn" class="mblDomButtonDarkBluePlus"
+						style="float: right"></span>
+				</div>
+			</div>
+			<div class="centerBtnContainer">
+				<button data-dojo-type="dojox.mobile.Button" id="modifyOrderItemBtn"
+					class="baseBtn greenBtn modifyOrderBtn">Save</button>
+				<button data-dojo-type="dojox.mobile.Button" id="deleteOrderItemBtn"
+					class="baseBtn redBtn deleteFromOrderBtn">Remove Item</button>
+			</div>
+		</div>
+		<div id="modifyOrderItemSides"
+			data-dojo-type="g2g/ModifyOrderItemSidesView"
+			data-dojo-props="closeButton: 'true'" class="chooseSidesDialog">
+			<!-- subheading -->
+			<div class="modifyOrderItemItemLabel">
+				<h2 data-dojo-type="dojox.mobile.RoundRectCategory"
+					id="modifyOrderItemSideLabel"></h2>
+			</div>
+			<!-- a rounded rectangle list container -->
+			<h2 id="orderItemSideToModifyRestaurantMenuCategoryItem"
+				class="dialogBoxTitle"></h2>
+			<div data-dojo-type="dojox/mobile/ScrollablePane"
+				id="restaurantMenuCategoryItemSidesToModifyScrollablePane"
+				class="sidesScrollablePane">
+				<ul data-dojo-type="dojox.mobile.RoundRectList"
+					id="restaurantMenuCategoryItemSidesToModifyRoundRectList"></ul>
+			</div>
+			<div class="centerBtnContainer">
+				<button data-dojo-type="dojox.mobile.Button"
+					id="modifyToOrderAfterChoosingSidesBtn"
+					class="loginBtn baseBtn greenBtn addToOrderBtn">Save</button>
+			</div>
+		</div>
+		<!-- The profile page -->
+		<div id="profileTabContainer"
+			data-dojo-type="g2g/ProfileTabContainerView"
+			class="registrationTabContainer"
+			data-dojo-props="disableTouchScroll:true">
+			<ul data-dojo-type="dojox/mobile/TabBar" fixed="top"
+				class="registrationTabBar">
+				<li data-dojo-type="dojox/mobile/TabBarButton"
+					id="profileAccountTabBarButton"
+					class="registrationTabButton mostLeftRadiusTabBarButton"
+					data-dojo-props='moveTo: "profileAccountView", icon1:"img/circle_yellow_10x10.png", icon2:"img/circle_black_10x10.png", selected:true'>Account</li>
+				<li data-dojo-type="dojox/mobile/TabBarButton"
+					id="profilePersonalTabBarButton"
+					class="registrationTabButton middleRadiusTabBarButton"
+					data-dojo-props='moveTo: "profilePersonalView", icon1:"img/circle_yellow_10x10.png", icon2:"img/circle_black_10x10.png"'>Personal</li>
+				<li data-dojo-type="dojox/mobile/TabBarButton"
+					id="profileAddressesTabBarButton"
+					class="registrationTabButton middleRadiusTabBarButton"
+					data-dojo-props='moveTo: "profileAddressesView", icon1:"img/circle_yellow_10x10.png", icon2:"img/circle_black_10x10.png"'>Addresses</li>
+				<li data-dojo-type="dojox/mobile/TabBarButton"
+					id="profilePaymentsTabBarButton"
+					class="registrationTabButton middleRadiusTabBarButton"
+					data-dojo-props='moveTo: "profilePaymentsView", icon1:"img/circle_yellow_10x10.png", icon2:"img/circle_black_10x10.png"'>Payments</li>
+				<li data-dojo-type="dojox/mobile/TabBarButton"
+					id="profileThatsItTabBarButton"
+					class="registrationTabButton mostRightRadiusTabBarButton"
+					data-dojo-props='moveTo: "profileThatsItView", icon1:"img/circle_yellow_10x10.png", icon2:"img/circle_black_10x10.png"'>That's
+					it!</li>
+			</ul>
+			<div data-dojo-type="g2g/ProfileAccountView" id="profileAccountView"
+				class="registratoinView" data-dojo-props="selected:true">
+				<div data-dojo-type="dojox/mobile/ScrollablePane"
+					id="profileAccountScrollablePane">
+					<div data-dojo-type="dojox.mobile.RoundRect">
+						<div class="registrationFieldContainer">
+							<div class="leftFloatedField">Username</div>
+							<input id="profileUsername" name="profileUsername" disabled
+								data-dojo-type="dojox.mobile.TextBox" class="fullWidth blackColor" />
+						</div>
+						<div class="registrationFieldContainer">
+							<div class="leftFloatedField">Password</div>
+							<input id="profilePassword" type="password"
+								name="profilePassword" data-dojo-type="dojox.mobile.TextBox"
+								placeHolder="Password" class="fullWidth blackColor" />
+						</div>
+						<div class="registrationFieldContainer">
+							<div class="leftFloatedField">Confirm password</div>
+							<input id="confirmProfilePassword" type="password"
+								name="confirmProfilePassword"
+								data-dojo-type="dojox.mobile.TextBox"
+								placeHolder="Retype password" class="fullWidth blackColor" />
+						</div>
+						<div class="registrationNextBtnContainer">
+							<button data-dojo-type="dojox.mobile.Button"
+								id="profileAccountNextBtn" class="registrationNextBtn"></button>
+							<div class="rightFloatedField nextButton">Next</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div data-dojo-type="g2g/ProfilePersonalView"
+				id="profilePersonalView" class="registratoinView">
+				<div data-dojo-type="dojox/mobile/ScrollablePane"
+					id="profilePersonalScrollablePane">
+					<div data-dojo-type="dojox.mobile.RoundRect">
+						<div class="registrationFieldContainer">
+							<div class="leftFloatedField">First Name</div>
+							<input id="profileFirstName" name="profileFirstName"
+								data-dojo-type="dojox.mobile.TextBox" placeHolder="e.g. John"
+								class="fullWidth blackColor" />
+						</div>
+						<div class="registrationFieldContainer">
+							<div class="leftFloatedField">Last Name</div>
+							<input id="profileLastName" name="profileLastName"
+								data-dojo-type="dojox.mobile.TextBox" placeHolder="e.g. Smith"
+								class="fullWidth blackColor" />
+						</div>
+						<div class="registrationFieldContainer">
+							<div class="leftFloatedField">Date of birth</div>
+							<!-- <div id="profileDateOfBirth" data-dojo-type="dojox/mobile/SpinWheelDatePicker" class="fullWidth" data-dojo-props="value: '2000-10-24'"></div> -->
+							<input id="profileDateOfBirth" name="profileDateOfBirth"
+								type="date" data-dojo-type="dojox.mobile.TextBox"
+								placeHolder="e.g. 12/31/1900" class="fullWidth blackColor" />
+						</div>
+						<!-- <div class="registrationFieldContainer">
+							<div class="leftFloatedField">
+							Email
+							</div>
+								<input id="profileEmail" disabled name="profileEmail" data-dojo-type="dojox.mobile.TextBox" placeHolder="e.g. Johnsmith@email.com" class="fullWidth"/>
+						</div> -->
+						<div class="registrationFieldContainer">
+							<div class="leftFloatedField">Phone#</div>
+							<input id="profilePhoneNumber" name="profilePhoneNumber"
+								data-dojo-type="dojox.mobile.TextBox"
+								placeHolder="e.g. (408) 123-5678" class="fullWidth blackColor" />
+						</div>
+						<div class="registrationNextBtnContainer">
+							<button data-dojo-type="dojox.mobile.Button"
+								id="profilePersonalNextBtn" class="registrationNextBtn"></button>
+							<div class="rightFloatedField nextButton">Next</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div data-dojo-type="g2g/ProfileAddressesView"
+				id="profileAddressesView" class="registratoinView">
+				<div data-dojo-type="dojox/mobile/ScrollablePane"
+					id="profileAddressesScrollablePane">
+					<div data-dojo-type="dojox.mobile.RoundRect">
+						<div class="previousNextButtonsContainer">
+							<img src="img/back-icon_32x32.png"
+								class="previousPaymentMethodBtnImg"
+								id="profilePreviousAddressImg" />
+							<button data-dojo-type="dojox.mobile.Button"
+								id="profilePreviousAddressBtn" class="previousPaymentMethodBtn">Previous</button>
+							<button data-dojo-type="dojox.mobile.Button"
+								id="profileNextAddressBtn" class="nextPaymentMethodBtn">Next</button>
+							<img src="img/next-icon_32x32.png"
+								class="nextPaymentMethodBtnImg" id="profileNextAddressImg" />
+							<button data-dojo-type="dojox.mobile.Button"
+								id="profileDeleteAddressBtn" class="deleteAddressBtn">Delete
+								X</button>
+						</div>
+						<div class="registrationFieldContainer">
+							<div class="leftFloatedField">Nickname</div>
+							<div class="fullWidth">
+								<input id="profileAddressNickname" name="profileAddressNickname"
+									data-dojo-type="dojox.mobile.TextBox" placeHolder="e.g. Home"
+									class="fullWidth blackColor" />
+							</div>
+						</div>
+						<div class="registrationFieldContainer">
+							<div>Street address</div>
+							<!-- </div>
+						<div class="registrationFieldContainer"> -->
+							<input id="profileStreetAddress" class="fullWidth blackColor"
+								name="profileStreetAddress"
+								data-dojo-type="dojox.mobile.TextBox"
+								placeHolder="e.g. 1907 Streetname Ave" />
+							<!-- </div>
+						<div class="registrationFieldContainer"> -->
+							<input id="profileStreetAddress2" class="fullWidth blackColor"
+								name="profileStreetAddress2"
+								data-dojo-type="dojox.mobile.TextBox" placeHolder="e.g. Apt# 5" />
+						</div>
+						<div class="registrationFieldContainer">
+							<div class="leftFloatedField">City</div>
+							<div class="fullWidth">
+								<input id="profileCity" name="profileCity"
+									data-dojo-type="dojox.mobile.TextBox"
+									placeHolder="e.g. San Jose" class="fullWidth blackColor" />
+							</div>
+						</div>
+						<div class="registrationFieldContainer">
+							<div class="leftFloatedField">State</div>
+							<div class="fullWidth">
+								<input id="profileState" name="profileState"
+									data-dojo-type="dojox.mobile.TextBox"
+									placeHolder="e.g. California" class="fullWidth blackColor" />
+							</div>
+						</div>
+						<div class="registrationFieldContainer">
+							<div class="leftFloatedField">Zip code</div>
+							<div class="fullWidth">
+								<input id="profileZipCode" name="profileZipCode"
+									data-dojo-type="dojox.mobile.TextBox" placeHolder="e.g. 95122"
+									class="fullWidth blackColor" />
+							</div>
+						</div>
+						<div class="registrationFieldContainer">
+							Address details
+							<!-- </div>
+						<div class="registrationFieldContainer"> -->
+							<textarea id="profileAddressDetails" class="fullWidth blackColor"
+								name="profileAddressDetails"
+								data-dojo-type="dojox.mobile.TextArea"
+								placeHolder="e.g. Building #12, upstairs, around the corner ... or any possible details for a fast delivery!">
+							</textarea>
+						</div>
+						<div class="registrationNextBtnContainer">
+							<button data-dojo-type="dojox.mobile.Button"
+								id="profileAddressesNextBtn" class="registrationNextBtn"></button>
+							<button data-dojo-type="dojox.mobile.Button"
+								id="profileAddAnotherAddressBtn"
+								class="addAnotherPaymentMethodBtn">Add another</button>
+							<img src="img/next-icon_32x32.png"
+								class="addAnotherAddressBtnImg" id="profileAddAnotherAddressImg" />
+							<div class="rightFloatedField nextButton">Next</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div data-dojo-type="g2g/ProfilePaymentsView"
+				id="profilePaymentsView" class="registratoinView">
+				<div data-dojo-type="dojox/mobile/ScrollablePane"
+					id="profilePaymentsScrollablePane">
+					<div data-dojo-type="dojox.mobile.RoundRect">
+						<div class="previousNextButtonsContainer">
+							<img src="img/back-icon_32x32.png"
+								class="previousPaymentMethodBtnImg"
+								id="profilePreviousPaymentMethodImg" />
+							<button data-dojo-type="dojox.mobile.Button"
+								id="profilePreviousPaymentMethodBtn"
+								class="previousPaymentMethodBtn">Previous</button>
+							<button data-dojo-type="dojox.mobile.Button"
+								id="profileNextPaymentMethodBtn" class="nextPaymentMethodBtn">Next</button>
+							<img src="img/next-icon_32x32.png"
+								class="nextPaymentMethodBtnImg" id="profileNextPaymentMethodImg" />
+							<button data-dojo-type="dojox.mobile.Button"
+								id="profileDeletePaymentMethodBtn"
+								class="deletePaymentMethodBtn">Delete X</button>
+						</div>
+						<div class="registrationFieldContainer">
+							<div class="fullWidth">Card number</div>
+							<!-- </div>
+						<div class="registrationFieldContainer"> -->
+							<div class="fullWidth">
+								<input id="profileCardNumber" type="number" min="1"
+									max="9999999999999999" class="fullWidth blackColor"
+									name="profileCardNumber" data-dojo-type="dojox.mobile.TextBox"
+									placeHolder="e.g. 4342 5622 0505 1986" class="fullWidth blackColor" />
+							</div>
+						</div>
+						<div class="registrationFieldContainer">
+							<div class="leftFloatedField fullWidth">Expiration date
+								(MM/YY)</div>
+							<!-- </div>
+						<div class="registrationFieldContainer"> -->
+							<div class="fullWidth">
+								<div class="leftFloatedField fortyFivePercentWidth">
+									<input id="profileCardExpirationMonth" class="fullWidth blackColor"
+										type="number" min="1" max="12"
+										name="profileCardExpirationMonth"
+										data-dojo-type="dojox.mobile.TextBox" placeHolder="e.g 10" />
+								</div>
+								<div
+									class="centerText textboxHeight leftFloatedField tenPercentWidth">/</div>
+								<div class="leftFloatedField fortyFivePercentWidth">
+									<input id="profileCardExpirationYear" class="fullWidth blackColor"
+										type="number" min="15" max="99"
+										name="profileCardExpirationYear"
+										data-dojo-type="dojox.mobile.TextBox" placeHolder="e.g 17" />
+								</div>
+							</div>
+						</div>
+						<div class="registrationFieldContainer">
+							<div class="leftFloatedField">CCV</div>
+							<div>
+								<input id="profileCardCCV" type="number" min="1" max="999"
+									name="profileCardCCV" data-dojo-type="dojox.mobile.TextBox"
+									placeHolder="e.g. 123" class="fullWidth blackColor" />
+							</div>
+						</div>
+						<div class="registrationFieldContainer">
+							<div class="leftFloatedField">Card nickname</div>
+							<div class="fullWidth">
+								<input id="profileCardNickname" name="profileCardNickname"
+									data-dojo-type="dojox.mobile.TextBox"
+									placeHolder="e.g. My Main Card" class="fullWidth blackColor" />
+							</div>
+						</div>
+						<div class="fullWidth smallItalicText">You pay online
+							through our ordering system. We only accept credit or debit
+							cards. This is done to ensure your delivery experience goes
+							smoothly. We take your personal information very seriously. Your
+							data is always securely encrypted to ensure maximum protection
+							and never shared</div>
+						<div class="registrationNextBtnContainer">
+							<button data-dojo-type="dojox.mobile.Button"
+								id="profilePaymentsNextBtn" class="registrationNextBtn"></button>
+							<div class="rightFloatedField nextButton">Done</div>
+							<button data-dojo-type="dojox.mobile.Button"
+								id="profileAddAnotherPaymentMethodBtn"
+								class="addAnotherPaymentMethodBtn">Add another</button>
+							<img src="img/next-icon_32x32.png"
+								class="addAnotherPaymentMethodBtnImg"
+								id="profileAddAnotherPaymentMethodImg" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div data-dojo-type="g2g/ProfileThatsItView" id="profileThatsItView"
+				class="registratoinView">
+				<div data-dojo-type="dojox/mobile/ScrollablePane"
+					id="profileThatItScrollablePane">
+					<div data-dojo-type="dojox.mobile.RoundRect">
+						<div class="thatsItImgContainer">
+							<img class="thatsItImg" src="img/check.png" />
+							<div class="thatsItText">You Are Done!</div>
+						</div>
+						<!-- <div class="registrationNextBtnContainer">
+						<button data-dojo-type="dojox.mobile.Button" id="profileThatsItNextBtn" class="registrationNextBtn"></button>
+						<div class="rightFloatedField nextButton">Continue using G2G</div>
+					</div> -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- the tab bar -->
+		<ul data-dojo-type="dojox/mobile/TabBar" fixed="bottom" id="mainTabBar">
+			<li data-dojo-type="dojox/mobile/TabBarButton"
+				id="restaurantsTabBarBtn"
+				data-dojo-props='icon1:"img/restaurant_29x29.png", icon2:"img/restaurant_29x29_selected.png", moveTo:"home", selected:true'>Restaurants</li>
+			<li data-dojo-type="dojox/mobile/TabBarButton" id="orderTabBarBtn"
+				data-dojo-props='icon1:"img/cart_29x29.png", icon2:"img/cart_29x29_selected.png", moveTo:"orderTabContainer"'>My
+				Orders</li>
+			<li data-dojo-type="dojox/mobile/TabBarButton"
+				id="myProfileTabBarBtn"
+				data-dojo-props='icon1:"img/profile_29x29.png", icon2:"img/profile_29x29_selected.png", moveTo:"profileTabContainer"'>My
+				Profile</li>
+		</ul>
+	</div>
+</body>
+</html>

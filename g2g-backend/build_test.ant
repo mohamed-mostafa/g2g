@@ -1,0 +1,97 @@
+<project name="g2g-backend" default="deploy" basedir=".">
+  <description>
+    Copies the resources that should be deployed to Openshift to the dist directory.
+	Replaces the required values
+  </description>
+  <!-- set global properties for this build -->
+  <property name="src" location="."/>
+  <property name="target" location="../../build/g2g-backend/test"/>
+  <property name="openShiftDir" location="../../OpenShift_test_git_repository/g2gservices"/>
+
+	<macrodef name = "git">
+	    <attribute name = "command" />
+	    <attribute name = "dir" default = "" />
+	    <element name = "args" optional = "true" />
+	    <sequential>
+	        <echo message = "git @{command args}" />
+	        <exec executable = "git" dir = "@{dir}">
+	            <arg value = "@{command}" />
+	            <args/>
+	        </exec>
+	    </sequential>
+	</macrodef>
+	
+  <target name="clean">
+    <!-- Create the time stamp -->
+    <tstamp/>
+	<!-- Delete the ${target} directory tree -->
+    <delete dir="${target}"/>
+	<mkdir dir="${target}"/>
+  </target>
+
+  <target name="copy" depends="clean" description="Collecting the needed files and copy them to test and prod">
+	<copy todir="${target}/node_modules">
+    	<fileset dir="${src}/node_modules"/>
+  	</copy>
+	<copy todir="${target}/g2g_modules">
+    	<fileset dir="${src}/g2g_modules"/>
+  	</copy>
+  	<copy todir="${target}/static">
+	    	<fileset dir="${src}/static"/>
+	  	</copy>
+	<copy todir="${target}">
+    	<fileset file="${src}/server.js"/>
+  	</copy>
+	<copy todir="${target}">
+    	<fileset file="${src}/package.json"/>
+  	</copy>
+  </target>
+    	
+	<target name="replace" depends="copy" description="Replacing the dynamic values">
+  		<replace file="${target}/g2g_modules/adapters/g2g_payment_adapter.js" token="#STRIPE_PRIVATE_KEY#" value="sk_test_ISdKcA1TpBVw3jVSmLr5JXMX" summary="yes"></replace>
+		<replace file="${target}/server.js" token="#ENABLE_DAEMONS#" value="false" summary="yes"></replace>
+		
+		<replace file="${target}/g2g_modules/adapters/g2g_push_notifications_adapter.js" token="#ONE_SIGNAL_APP_ID#" value="67653f6e-869c-443d-8da7-e447b8110ed9" summary="yes"></replace>
+		<replace file="${target}/g2g_modules/adapters/g2g_push_notifications_adapter.js" token="#ONE_SIGNAL_REST_API_AUTH#" value="NGRjNjY1OGQtNDM4MC00Y2I0LTllNTctZTBjNWNmY2YzNDAw" summary="yes"></replace>
+  </target>
+	
+	<target name="clearOpenshiftDir" depends="replace" description="Clearing Openshift Directory">
+		<delete dir="${openShiftDir}/g2g_modules"/>
+		<delete dir="${openShiftDir}/static"/>
+		<delete dir="${openShiftDir}/node_modules"/>
+		<delete file="${openShiftDir}/server.js"/>
+		<delete file="${openShiftDir}/package.json"/>
+	</target>
+	
+	<target name="copyToOpenshiftDir" depends="clearOpenshiftDir" description="Copying application files to Openshift Directory">
+		<copy todir="${openShiftDir}/node_modules">
+	    	<fileset dir="${target}/node_modules"/>
+	  	</copy>
+		<copy todir="${openShiftDir}/g2g_modules">
+	    	<fileset dir="${target}/g2g_modules"/>
+	  	</copy>
+	  	<copy todir="${openShiftDir}/static">
+		    	<fileset dir="${target}/static"/>
+		  	</copy>
+		<copy todir="${openShiftDir}">
+	    	<fileset file="${target}/server.js"/>
+	  	</copy>
+		<copy todir="${openShiftDir}">
+	    	<fileset file="${target}/package.json"/>
+	  	</copy>
+	</target>
+	
+	<target name="deploy" depends="copyToOpenshiftDir" description="Deploy application to TEST environment">
+		<git command = "commit" dir="${openShiftDir}" >
+		    <args>
+		    	<arg value = "-a" />
+		        <arg value = "-m" />
+		        <arg value = "v2.5" />
+		    </args>
+		</git>
+		
+		<git command = "push" dir="${openShiftDir}">
+		</git>
+		
+	</target>
+</project>

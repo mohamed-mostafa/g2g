@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.g2g.mobile.driver" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <preference name="loglevel" value="DEBUG" />
+    <feature name="StatusBar">
+        <param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        <param name="onload" value="true" />
+    </feature>
+    <name>G2G-driver</name>
+    <description>
+        G2G Driver Mobile Application
+    </description>
+    <author email="eng.mmustafa84@gmail.com" href="http://about.me/eng.mmustafa84">
+        Mohamed Mostafa
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <preference name="orientation" value="portrait" />
+    <preference name="target-device" value="universal" />
+    <preference name="fullscreen" value="true" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="prerendered-icon" value="true" />
+    <preference name="stay-in-webview" value="false" />
+    <preference name="detect-data-types" value="true" />
+    <preference name="exit-on-suspend" value="false" />
+    <preference name="show-splash-screen-spinner" value="true" />
+    <preference name="auto-hide-splash-screen" value="true" />
+    <preference name="disable-cursor" value="false" />
+    <preference name="android-minSdkVersion" value="7" />
+    <preference name="android-installLocation" value="auto" />
+    <icon src="icon.png" />
+    <icon gap:platform="ios" height="57" src="icon57.png" width="57" />
+    <icon gap:platform="ios" height="72" src="icon72.png" width="72" />
+    <icon gap:platform="ios" height="114" src="icon114.png" width="114" />
+    <icon gap:platform="ios" height="144" src="icon144.png" width="144" />
+    <icon gap:platform="ios" height="152" src="icon152.png" width="152" />
+    <icon gap:platform="ios" height="76" src="icon76.png" width="76" />
+    <icon gap:platform="ios" height="120" src="icon120.png" width="120" />
+    <gap:splash src="Default.png" />
+    <gap:splash gap:platform="ios" height="480" src="Default.png" width="320" />
+    <gap:splash gap:platform="ios" height="960" src="Default@2x.png" width="640" />
+    <gap:splash gap:platform="ios" height="1136" src="Default-568h@2x.png" width="640" />
+    <gap:splash gap:platform="ios" height="1334" src="Default-667h@2x.png" width="750" />
+    <gap:splash gap:platform="ios" height="2208" src="Default-Portrait.png" width="1242" />
+    <gap:splash gap:platform="ios" height="1242" src="Default-Landscape.png" width="2208" />
+    <gap:splash gap:platform="ios" height="1024" src="Default-Portrait.png" width="768" />
+    <gap:splash gap:platform="ios" height="768" src="Default-Landscape.png" width="1024" />
+    <gap:splash gap:platform="ios" height="2048" src="Default-Portrait.png" width="1536" />
+    <gap:splash gap:platform="ios" height="1536" src="Default-Landscape.png" width="2048" />
+    <preference name="SplashScreenDelay" value="2500" />
+    <gap:plugin name="org.apache.cordova.splashscreen" />
+    <gap:plugin name="org.apache.cordova.statusbar" />
+    <gap:plugin name="com.ionic.keyboard" />
+    <gap:config-file parent="UIStatusBarHidden" platform="ios">
+        <true />
+    </gap:config-file>
+    <gap:config-file parent="UIViewControllerBasedStatusBarAppearance" platform="ios">
+        <false />
+    </gap:config-file>
+    <preference name="permissions" value="none" />
+    <feature name="BackgroundGeoLocation">
+        <param name="android-package" value="com.tenforwardconsulting.cordova.bgloc.BackgroundGpsPlugin" />
+    </feature>
+</widget>

@@ -1,0 +1,38 @@
+To login to the application
+1- open a git bash (inside the directory of the app ?)
+	rhc ssh -a <app name>
+		example: rhc ssh -a g2gservices
+2- type the command you want
+	example: quota -s (-s to show in MB)
+
+-----------------------------------------------------
+to view logs
+rhc tail -o "n 200" -a g2gservices > C:/log.txt
+rhc tail -a g2gproductionservices
+
+
+for multiple accounts:
+rhc command line tools come with the global option "-l, --rhlogin LOGIN". You have two options:
+
+1) Use -l flag with every command to specify the login name OR
+
+rhc app create <appname> <cartridge> [-l username1/username2]
+2) Run "rhc setup -l LOGIN" between the sessions. Once done managing apps from one account you can end the session for it by running "rhc account logout".
+
+rhc setup -l username1
+rhc app create <appname> <cartridge>
+rhc account logout
+rhc setup -l username2
+
+--- to connect using database
+rhc setup -l eng.mmustafa84@gmail.com
+rhc port-forward -a g2gproductionservices
+
+To view system health:
+1- Login: 							rhc setup -l eng.mmustafa84@gmail.com
+2- View disk space status			rhc app-show --gears quota -a g2gservices
+3- View CPU usage					??
+
+
+The better solution is to configure HAProxy configuration file.
+SSH into the main gear using rhc ssh --app command, then change directory to haproxy/conf, and then update option httpchk GET / to option httpchk GET /valid_location, and finally restart the HAProxy using rhc cartridge-restart --cartridge haproxy. You can check the status of your gears by going to http://myapp-myusername.rhcloud.com/haproxy-status.

@@ -1,0 +1,67 @@
+{
+  "_from": "cordova-plugin-mauron85-background-geolocation-phonegapbuild@0.9.4",
+  "_id": "cordova-plugin-mauron85-background-geolocation-phonegapbuild@0.9.4",
+  "_inBundle": false,
+  "_integrity": "sha1-pnSiOIpWZoTldrC2Qtxff7Z11r8=",
+  "_location": "/cordova-plugin-mauron85-background-geolocation-phonegapbuild",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "cordova-plugin-mauron85-background-geolocation-phonegapbuild@0.9.4",
+    "name": "cordova-plugin-mauron85-background-geolocation-phonegapbuild",
+    "escapedName": "cordova-plugin-mauron85-background-geolocation-phonegapbuild",
+    "rawSpec": "0.9.4",
+    "saveSpec": null,
+    "fetchSpec": "0.9.4"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-mauron85-background-geolocation-phonegapbuild/-/cordova-plugin-mauron85-background-geolocation-phonegapbuild-0.9.4.tgz",
+  "_shasum": "a674a2388a566684e576b0b642dc5f7fb675d6bf",
+  "_spec": "cordova-plugin-mauron85-background-geolocation-phonegapbuild@0.9.4",
+  "_where": "C:\\Work\\G2G\\ws\\g2g\\g2g-customer",
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/mauron85/cordova-plugin-background-geolocation/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-mauron85-background-geolocation-phonegapbuild",
+    "platforms": [
+      "android",
+      "ios",
+      "wp8"
+    ]
+  },
+  "deprecated": "This plugin is deprecated. Use cordova-plugin-mauron85-background-geolocation instead.",
+  "description": "Cordova Background GeoLocation Plugin",
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "homepage": "https://github.com/mauron85/cordova-plugin-background-geolocation#readme",
+  "keywords": [
+    "gps",
+    "location",
+    "geolocation",
+    "background",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "cordova-wp8",
+    "cordova",
+    "phonegap"
+  ],
+  "license": "Apache-2.0",
+  "name": "cordova-plugin-mauron85-background-geolocation-phonegapbuild",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mauron85/cordova-plugin-mauron85-background-geolocation-phonegapbuild.git"
+  },
+  "version": "0.9.4"
+}

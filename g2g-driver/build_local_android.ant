@@ -1,0 +1,28 @@
+<project name="g2g-control" default="replace" basedir=".">
+  <description>
+    Copies the resources that should be deployed to Openshift to the dist directory.
+	Replaces the required values
+  </description>
+  <!-- set global properties for this build -->
+  <property name="src" location="."/>
+  <property name="target" location="../../build/g2g-driver/local_android"/>
+
+  <target name="clean">
+    <!-- Create the time stamp -->
+    <tstamp/>
+	<!-- Delete the ${target} directory tree-->
+    <delete dir="${target}"/>
+	<mkdir dir="${target}"/> 
+  </target>
+
+  <target name="copy" depends="clean" description="Collecting the needed files and copy them to test and prod">
+		<copy todir="${target}">
+	    	<fileset dir="${src}" excludes="platforms/ prod/ local/ test/ local_android/ *.ant"/>
+	  	</copy>
+  </target>
+    	
+  <target name="replace" depends="copy" description="Replacing the dynamic values">
+  		<replace file="${target}/www/js/globals.js" token="#G2G_BACKEND_SERVER_URL#" value="http://10.0.2.2:8080" summary="yes"></replace>
+  </target>
+
+</project>

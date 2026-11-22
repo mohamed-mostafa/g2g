@@ -1,0 +1,356 @@
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+	content="width=device-width,height=device-height,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>g2g</title>
+<!-- application stylesheet will go here -->
+<!-- Need to load the CSS stylesheets for the badge classes you use -->
+<!-- dynamically apply native visual theme according to the browser user agent -->
+<!-- 
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.9.6/dojox/mobile/deviceTheme.js"></script> -->
+<link rel="stylesheet" type="text/css" href="css/custom/custom.css"></link>
+<link rel="stylesheet" type="text/css" href="css/custom/View.css"></link>
+<link rel="stylesheet" type="text/css"
+	href="css/custom/ScrollablePane.css"></link>
+<link rel="stylesheet" type="text/css" href="css/custom/Heading.css"></link>
+<link rel="stylesheet" type="text/css"
+	href="css/custom/RoundRectList.css"></link>
+<link rel="stylesheet" type="text/css" href="css/custom/RoundRect.css"></link>
+<link rel="stylesheet" type="text/css" href="css/custom/Accordion.css"></link>
+<link href="css/common/domButtons/DomButtonBlackRightArrow16.css" rel="stylesheet"/>
+<link href="css/common/domButtons/DomButtonWhiteDownArrow16.css" rel="stylesheet"/>
+<link rel="stylesheet" type="text/css" href="css/custom/FormLayout.css"></link>
+<link rel="stylesheet" type="text/css" href="css/custom/Button.css"></link>
+<link rel="stylesheet" type="text/css" href="css/custom/TextBox.css"></link>
+<link rel="stylesheet" type="text/css" href="css/custom/ListItem.css"></link>
+<link rel="stylesheet" type="text/css" href="css/custom/ToggleButton.css"></link>
+<link rel="stylesheet" type="text/css"
+	href="css/custom/ToolBarButton.css"></link>
+<link rel="stylesheet" type="text/css"
+	href="css/custom/RoundRectCategory.css"></link>
+<link rel="stylesheet" type="text/css" href="css/custom/TabBar.css"></link>
+<link rel="stylesheet" type="text/css" href="css/custom/TextArea.css"></link>
+<link rel="stylesheet" type="text/css" href="css/custom/ValuePicker.css"></link>
+<link rel="stylesheet" type="text/css"
+	href="css/common/domButtons/DomButtonRedBadge.css" />
+<link rel="stylesheet" type="text/css" href="css/g2g.css">
+
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet"/>
+<!-- Custom CSS - Used by tracking order -->
+<link href="css/ordertracking.css" rel="stylesheet">
+
+<!-- cordova js files -->
+<script type="text/javascript" src="js/index.js"></script>
+<script src="cordova.js"></script>
+<!-- dojo configuration options -->
+<script type="text/javascript">
+	dojoConfig = {
+		async : true,
+		baseUrl : './js/',
+		tlmSiblingOfDojo : false,
+		parseOnLoad : false,
+	};
+</script>
+<!-- dojo bootstrap -->
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/dojo/1.9.6/dojo/dojo.js"></script>
+<script type="text/javascript" src="js/globals.js"></script>
+<!-- Google maps -->
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcEbRjYjOIMp9CHdO6VJiB3PQFNOtUbBA&callback=LocationObject.init" async defer></script> -->
+<!-- dojo application code -->
+<script type="text/javascript">
+	require([ "dojox/mobile/parser", "dijit/registry",
+			"g2g/libraries/StorageManager",
+			"g2g/libraries/GPSManager",
+			"g2g/DriverDeliveredOrdersView",
+			"g2g/DoubleButtonDialogView",
+			"g2g/DriverOrder",
+			"g2g/DriverHomeView",
+			"g2g/DriverLoginView",
+			"g2g/DriverActiveOrdersView",
+			"g2g/LoadingDialogView",
+			"g2g/MessageDialogView",
+			"g2g/PendingOrdersView",
+			"g2g/SingleButtonDialogView",
+	        "g2g/SplashView",
+			"g2g/DriverTabContainerView",
+			"g2g/YesNoDialogView",
+			"g2g/GoogleMapView",
+			"g2g/DriverShiftDurationDialog",
+			"dojox/mobile/compat", "dojox/mobile/View", "dojox/mobile/ScrollableView", "dojox/mobile/GridLayout",
+			"dojox/mobile/ScrollablePane", "dojox/mobile/SimpleDialog", "dojox/mobile/SwapView", "dojox/mobile/Switch",
+			"dojox/mobile/FilteredListMixin", "dojox/mobile/Heading", "dojox/mobile/PageIndicator",
+			"dojox/mobile/Badge", "dojox/mobile/RoundRectList", "dojox/mobile/Pane",
+			"dojox/mobile/RoundRect", "dojox/mobile/FormLayout", "dojox/mobile/ContentPane", "dojox/mobile/Accordion",
+			"dojox/mobile/Button", "dojox/mobile/TabBar", "dojox/mobile/ToggleButton",
+			"dojox/mobile/TabBarButton", "dojox/mobile/TextBox", "dojox/mobile/ValuePickerTimePicker",
+			"dojox/mobile/ListItem", "dojox/mobile/RoundRectCategory",
+			"dojox/mobile/TextArea", "dojox/mobile/Badge", "dojox/mobile/Rating",
+			/* "dojox/mobile/SpinWheelDatePicker", */
+			"dojo/domReady!" ], function(_parser, _registry) {
+		// now parse the page for widgets
+		_parser.parse();
+		GlobalObjects.registry = _registry;
+	});
+</script>
+</head>
+<body style="visibility: hidden;">
+	<!-- An empty screen -->
+	<div id="emptyScreen" data-dojo-type="dojox/mobile/View">G2G is
+		unable to run</div>
+	<div id="loadingDialog" data-dojo-type="g2g/LoadingDialogView" style="z-index: 190;"
+		class="loadingDialog">
+		<div class="dialogImageField">
+			<img src="img/runnerspinner.gif" class="loadingImage"/>
+		</div>
+		<!-- <div id="progressIndicatorContainer"></div> -->
+		<div id="loadingMessageField" class="loadingDialogText ellipsisText"></div>
+	</div>
+	<!-- The storage manager -->
+	<div id="storageManager" data-dojo-type="g2g/libraries/StorageManager">
+	</div>
+	<div id="gpsManager" data-dojo-type="g2g/libraries/GPSManager">
+	</div>
+	<!-- splash screen -->
+	<div id="splash" data-dojo-type="g2g/SplashView"
+		data-dojo-props="selected:true" class="signin">
+		<div id="splashScreenDiv">
+			<div id="splashScreenApplicationName">
+				<img src="img/g2g_logo.png" style="width: 70%" />
+			</div>
+			<!-- <div id="splashScreenApplicationSlogan">
+				For the late night cravings!
+			</div> -->
+			<!-- <div id="splashScreenBeta">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; BETA</div> -->
+			<div id="splashScreenSignInButton">
+				<button id="signInBtn" data-dojo-type="dojox.mobile.Button"
+					data-dojo-props="label: 'Driver Sign in'"></button>
+			</div>
+			<div id="splashScreenSignUpButton">
+				<button id="signUpBtn" data-dojo-type="dojox.mobile.Button"
+					data-dojo-props="label: 'Driver Sign up'"></button>
+			</div>
+		</div>
+	</div>
+	<div id="yesNoDialog" data-dojo-type="g2g/YesNoDialogView" data-dojo-props="closeButton: 'false'" class="orderItemDialog" style="z-index: 180;">
+		<div data-dojo-type="dojox.mobile.RoundRect" class="marginless">
+			<div class="dialogImageField">
+				<img src="img/icon.png" class="dialogImage"/>
+			</div>
+			<div id="yesNoQuestionFieldField" class="messageDialogText"></div>
+			<div id="yesNoSubtitleField" class="messageDialogSmallText"></div>
+			<div class="centerBtnContainer">
+				<button data-dojo-type="dojox.mobile.Button" id="yesBtn"
+					class="baseBtn greenBtn yesBtn">Yes</button>
+				<button data-dojo-type="dojox.mobile.Button" id="noBtn"
+					class="baseBtn redBtn noBtn">No</button>
+			</div>
+		</div>
+	</div>
+	<div id="singleButtonDialog" data-dojo-type="g2g/SingleButtonDialogView" data-dojo-props="closeButton: 'true'" class="orderItemDialog" style="z-index: 180;">
+		<div data-dojo-type="dojox.mobile.RoundRect" class="marginless">
+			<div class="dialogImageField">
+				<img src="img/icon.png" class="dialogImage"/>
+			</div>
+			<div id="singleButtonQuestionField" class="messageDialogText"></div>
+			<div id="singleButtonSubtitleField" class="messageDialogSmallText"></div>
+			<div class="centerBtnContainer">
+				<button data-dojo-type="dojox.mobile.Button" id="singleButton"
+					class="baseBtn greenBtn g2gbtn">Ok</button>
+			</div>
+		</div>
+	</div>
+	<div id="doubleButtonDialog" data-dojo-type="g2g/DoubleButtonDialogView" data-dojo-props="closeButton: 'true'" class="orderItemDialog" style="z-index: 180;">
+		<div data-dojo-type="dojox.mobile.RoundRect" class="marginless">
+			<div class="dialogImageField">
+				<img src="img/icon.png" class="dialogImage"/>
+			</div>
+			<div id="doubleButtonQuestionField" class="messageDialogText"></div>
+			<div id="doubleButtonSubtitleField" class="messageDialogSmallText"></div>
+			<div class="centerBtnContainer">
+				<button data-dojo-type="dojox.mobile.Button" id="leftButton"
+					class="baseBtn leftBtn g2gbtn">Ok</button>
+					<button data-dojo-type="dojox.mobile.Button" id="rightButton"
+					class="baseBtn rightBtn g2gbtn">Cancel</button>
+			</div>
+		</div>
+	</div>
+	<div id="driverShiftDurationDialog" data-dojo-type="g2g/DriverShiftDurationDialog"
+		data-dojo-props="closeButton: 'true'" class="orderItemDialog">
+		<div data-dojo-type="dojox.mobile.RoundRect" class="marginless">
+			<div class="dialogImageField">
+				<img src="img/icon.png" class="dialogImage"/>
+			</div>
+			<div class="messageDialogText">When do you expect to clock-out ?</div>
+			<div style="margin-bottom: 10px;" class="fullWidth smallItalicText">This will help us plan our availability</div>
+			<div class="registrationFieldContainer">
+				<div class="fullWidth">
+					<div id="driverShiftDurationValuePickerTimePicker" data-dojo-type="dojox.mobile.ValuePickerTimePicker"
+					data-dojo-props='values: ["4", "00"], is24h:false, readOnly: true'></div>
+				</div>
+			</div>
+			<div class="centerBtnContainer">
+				<button data-dojo-type="dojox.mobile.Button" id="driverShiftDurationOkBtn"
+					class="baseBtn greenBtn findNearbyRestaurantBtn">Clock-in</button>
+			</div>
+		</div>
+	</div>
+	<!-- The generic message box -->
+	<div id="messageDialog" data-dojo-type="g2g/MessageDialogView"
+		data-dojo-props="closeButton: 'true'" class="announcementDialog" style="z-index: 200;">
+		<div class="dialogImageField">
+			<img src="img/icon.png" class="dialogImage"/>
+		</div>
+		<div id="messageField" class="announcementDialogText"></div>
+	</div>
+	<!-- The "login" page -->
+	<div id="login" data-dojo-type="g2g/DriverLoginView">
+		<table id="loginTable">
+			<tr>
+				<td id="loginTableCell">
+					<div data-dojo-type="dojox.mobile.RoundRect">
+						<form id="loginForm">
+							<div data-dojo-type="dojox.mobile.FormLayout">
+								<div>
+									<!-- <label>G2G Email Address</label> -->
+									<fieldset>
+										<input id="username" name="username"
+											data-dojo-type="dojox.mobile.TextBox"
+											data-dojo-props="selected: true" class="fullWidth loginField" placeHolder="G2G Email Address"/>
+									</fieldset>
+								</div>
+								<div>
+									<!-- <label>G2G Password</label> -->
+									<fieldset>
+										<input id="password" type="password" name="password"
+											data-dojo-type="dojox.mobile.TextBox" class="fullWidth loginField" placeHolder="G2G Password"/>
+									</fieldset>
+								</div>
+							</div>
+							<div class="forgotPasswordContainer">
+								<div id="forgotPasswordLink" class="leftFloatedField">I
+									Forgot My Password</div>
+								<div id="signUpLink" class="rightFloatedField">Sign up</div>
+							</div>
+						</form>
+						<button data-dojo-type="dojox.mobile.Button" id="loginBtn"
+							class="loginBtn baseBtn whiteBtn">Login</button>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+	<!-- The main tab container that contains everything after login -->
+	<div id="driverTabContainer" data-dojo-type="g2g/DriverTabContainerView"
+		data-dojo-props="disableTouchScroll:true" class="tabContainer">
+		<!-- <h1 data-dojo-type="dojox.mobile.Heading" id="tabContainerHeader"
+			fixed="top">
+			<span data-dojo-type="dojox/mobile/ToolBarButton"
+				id="tabContainerHeaderBackBtn"></span>
+		</h1> -->
+		<!-- The "home" page -->
+		<div id="driverHome" data-dojo-type="g2g/DriverHomeView" data-dojo-props="selected:true">
+		<h1 data-dojo-type="dojox.mobile.Heading" id="driverHomeHeader" fixed="top" data-dojo-props='label: "Home"'>
+			<span data-dojo-type="dojox/mobile/ToolBarButton" id="refreshHomeBtn" data-dojo-props='icon:"img/refresh.png"' style="float:right;" onclick="Utilities.refreshDriverHome();"></span>
+		</h1>
+			<!-- a rounded rectangle list container -->
+			  <div data-dojo-type="dojox/mobile/GridLayout" data-dojo-props='cols:1' style="height: 100%;">
+			    <div data-dojo-type="dojox/mobile/Pane">
+			      <div id="emptyField"style="height: 100px;"></div>
+			    </div>
+			    <div data-dojo-type="dojox/mobile/Pane" style="text-align: center; margin-bottom: 20px;">
+				    <div class="dialogImageField">
+						<img src="img/icon.png" class="dialogImage" id="driverHomeIcon" />
+					</div>
+				</div>
+			    <div data-dojo-type="dojox/mobile/Pane" style="margin-bottom: 20px;">
+			      <div id="driverWelcomeField"></div>
+			    </div>
+			    <div data-dojo-type="dojox/mobile/Pane" style="text-align: center; margin-bottom: 20px;">
+					<button data-dojo-type="dojox.mobile.Button" id="clockInClockOutBtn" class="loginBtn baseBtn whiteBtn">
+					Clock-in
+					</button>
+			    </div>
+			    <div data-dojo-type="dojox/mobile/Pane">
+			    	<div id="driverStatusField"></div>
+			    	<div id="driverDurationField"></div>
+			    </div>
+			</div>
+		</div>
+		<div id="orderView" data-dojo-type="g2g/DriverOrder">
+		<h1 data-dojo-type="dojox.mobile.Heading" id="orderViewHeader" fixed="top" data-dojo-props='label: ""'>
+			<span data-dojo-type="dojox/mobile/ToolBarButton" id="backOrderBtn" data-dojo-props='moveTo: "activeOrders", icon: "img/back-icon.png"'></span>
+			<span data-dojo-type="dojox/mobile/ToolBarButton" id="refreshOrderBtn" data-dojo-props='icon:"img/refresh.png"' style="float:right;" onclick="Utilities.refreshCurrentOrder();"></span>
+		</h1>
+			<ul data-dojo-type="dojox/mobile/TabBar" data-dojo-props='barType:"segmentedControl"'>
+			  <li data-dojo-type="dojox/mobile/TabBarButton"
+			      data-dojo-props='moveTo:"orderTabView", selected:true'>Order</li>
+			  <li data-dojo-type="dojox/mobile/TabBarButton"
+			      data-dojo-props='moveTo:"detailsTabView"'>Details</li>
+			  <li data-dojo-type="dojox/mobile/TabBarButton"
+			      data-dojo-props='moveTo:"mapTabView"'>Map</li>
+			</ul>
+			 <div data-dojo-type="dojox/mobile/View" id="orderTabView">
+		    	<div data-dojo-type="dojox/mobile/RoundRect" data-dojo-props='shadow:true'>
+					<div id="orderRestaurantLogoDiv"><img class="driverOrdersRestaurantImg" id="orderRestaurantLogoImg"/></div>
+					<div id="orderRestaurantNameField"></div>
+					<div id="orderRestaurantAddressField"></div>
+				</div>
+				<div data-dojo-type="dojox/mobile/RoundRect" id="statusButtonsRoundRect" data-dojo-props='shadow:true' style="text-align: center;">
+					
+				</div>
+				<div data-dojo-type="dojox/mobile/ScrollablePane" id="orderItemsScrollablePane">
+			    	<ul data-dojo-type="dojox/mobile/RoundRectList" data-dojo-props='shadow:true' id="itemsRoundRectList">
+					</ul>
+				</div>
+		    </div>
+			<div data-dojo-type="dojox/mobile/View" id="detailsTabView">
+				<div data-dojo-type="dojox/mobile/RoundRect" data-dojo-props='shadow:true'>
+					<div data-dojo-type="dojox/mobile/RoundRectCategory" data-dojo-props='label: "Order"' class="g2gRoundRectCategory"></div>
+					<div id="orderIdField"></div>
+					<div id="orderStatusField"></div>
+					<div id="customerCityField1"></div>
+					<div id="orderETAField"></div>
+				</div>
+				<div data-dojo-type="dojox/mobile/RoundRect" data-dojo-props='shadow:true'>
+					<div data-dojo-type="dojox/mobile/RoundRectCategory" data-dojo-props='label: "Customer"' class="g2gRoundRectCategory"></div>
+					<div id="customerNameField"></div>
+					<div id="customerPhoneField"></div>
+					<div id="customerAddress1Field"></div>
+					<div id="customerOrderAddressSpecialInstructionsField"></div>
+					<div id="customerProfileAddressSpecialInstructionsField"></div>
+				</div>
+			</div>
+			<div data-dojo-type="g2g/GoogleMapView" id="mapTabView">
+				<div id="googleMap" style="width: 100% !important; height: 100% !important">
+				</div>
+			</div>
+		</div>
+		<div id="activeOrders" data-dojo-type="g2g/DriverActiveOrdersView">
+			<h1 data-dojo-type="dojox.mobile.Heading" id="activeOrdersHeader" fixed="top" data-dojo-props='label: "Active Orders" '>
+				<span data-dojo-type="dojox/mobile/ToolBarButton" id="refreshActiveOrdersBtn" data-dojo-props='icon:"img/refresh.png"' style="float:right;" onclick="Utilities.refreshActiveOrders();"></span>
+			</h1>
+			<div data-dojo-type="dojox/mobile/ScrollablePane"
+				id="driverActiveOrdersScrollablePane">
+				<ul data-dojo-type="dojox.mobile.RoundRectList"
+					id="driverActiveOrdersRoundRectList"></ul>
+			</div>
+		</div>
+		<!-- the tab bar -->
+		<ul data-dojo-type="dojox/mobile/TabBar" fixed="bottom" id="mainTabBar">
+			<li data-dojo-type="dojox/mobile/TabBarButton"
+				id="driverHomeTabBarBtn"
+				data-dojo-props='icon1:"img/home.png", icon2:"img/home.png", moveTo:"driverHome", selected:true'>Home</li>
+			<li data-dojo-type="dojox/mobile/TabBarButton" id="driverOrdersTabBarBtn"
+				data-dojo-props='icon1:"img/cart_29x29.png", icon2:"img/cart_29x29_selected.png", moveTo:"activeOrders"'>My
+				Orders</li>
+		</ul>
+	</div>
+</body>
+</html>

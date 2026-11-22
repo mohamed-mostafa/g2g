@@ -1,0 +1,40 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-mauron85-background-geolocation-phonegapbuild": {
+      "PACKAGE_NAME": "com.g2g.mobile.customer"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.g2g.mobile.customer"
+    },
+    "nl.x-services.plugins.insomnia": {
+      "PACKAGE_NAME": "com.g2g.mobile.customer"
+    },
+    "onesignal-cordova-plugin": {
+      "PACKAGE_NAME": "com.g2g.mobile.customer"
+    },
+    "org.apache.cordova.geolocation": {
+      "PACKAGE_NAME": "com.g2g.mobile.customer"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.g2g.mobile.customer"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-googleplayservices": {
+      "PACKAGE_NAME": "com.g2g.mobile.customer"
+    },
+    "org.apache.cordova.splashscreen": {
+      "PACKAGE_NAME": "com.g2g.mobile.customer"
+    },
+    "org.apache.cordova.statusbar": {
+      "PACKAGE_NAME": "com.g2g.mobile.customer"
+    }
+  }
+}
